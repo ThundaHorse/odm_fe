@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link>
     </div>
     <router-view />
+    <MainFooter />
   </div>
 </template>
 
@@ -29,3 +30,16 @@
   color: #42b983;
 }
 </style>
+
+<script>
+import MainFooter from "./layout/MainFooter";
+
+export default {
+  components: {
+    MainFooter
+  },
+  data() {
+    return {};
+  }
+};
+</script>

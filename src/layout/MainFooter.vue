@@ -7,7 +7,7 @@
         <!-- Grid column -->
         <div class="col-md-6 mt-md-0 mt-3">
           <!-- Content -->
-          <h5 class="text-uppercase">Footer Content</h5>
+          <h5 class="text-uppercase">Placeholder</h5>
           <p>blah</p>
         </div>
         <!-- Grid column -->
@@ -15,43 +15,11 @@
         <!-- Grid column -->
         <div class="col-md-3 mb-md-0 mb-3">
           <!-- Links -->
-          <h5 class="text-uppercase">Links</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
         </div>
-        <!-- Grid column -->
 
         <!-- Grid column -->
         <div class="col-md-3 mb-md-0 mb-3">
-          <!-- Links -->
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
+          <p>Blah</p>
         </div>
         <!-- Grid column -->
       </div>
@@ -61,8 +29,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">
-      © 2018 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/">MDBootstrap.com</a>
+      <p>blah</p>
     </div>
     <!-- Copyright -->
   </footer>

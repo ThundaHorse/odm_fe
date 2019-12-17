@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link>
     </div>
     <router-view />
-    <MainFooter />
+    <!-- <MainFooter /> -->
   </div>
 </template>
 
@@ -32,11 +32,11 @@
 </style>
 
 <script>
-import MainFooter from "./layout/MainFooter";
+// import MainFooter from "./layout/MainFooter";
 
 export default {
   components: {
-    MainFooter
+    // MainFooter
   },
   data() {
     return {};

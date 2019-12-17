@@ -1,33 +1,27 @@
 <template>
   <div class="home">
     <div class="container">
-      <h1>Message</h1>
+      <h1>Placeholder</h1>
     </div>
     <hr />
-    <div class="container">
-      <div v-for="(post, idx) in allPosts" :key="idx">
-        <p>{{ post.description }}</p>
-      </div>
-    </div>
+    <PostIndex />
   </div>
 </template>
 
 <style></style>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import PostIndex from "../components/posts/PostIndex";
 
 export default {
   name: "home",
-  data: function() {
+  components: {
+    PostIndex
+  },
+  data() {
     return {};
   },
-  computed: mapGetters(["allPosts"]),
-  methods: {
-    ...mapActions(["fetchPosts"])
-  },
-  created() {
-    this.fetchPosts();
-  }
+  created() {},
+  methods: {}
 };
 </script>

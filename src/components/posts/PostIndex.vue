@@ -1,9 +1,8 @@
 <template>
   <div class="posts">
     <div class="container">
-      {{ allPosts[0] }}
       <div v-for="(post, idx) in allPosts" :key="idx">
-        <!-- <p>{{ post.description }}</p> -->
+        <p>{{ post.description }}</p>
       </div>
     </div>
   </div>

@@ -1,0 +1,63 @@
+<template>
+  <div class="postForm">
+    <h1>Placeholder</h1>
+    <div class="container">
+      <form v-on:submit.prevent="update()">
+        <div>
+          <label for="imageUpload"></label>
+          <input
+            class="form-control-file"
+            id="imageUpload"
+            type="file"
+            v-on:change="setFile($event)"
+            ref="fileInput"
+          />
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <p style="text-align: left; color: black;">First Name</p>
+            <label for="description" class="bmd-label-placeholder"></label>
+            <input
+              v-model="newMeme.description"
+              type="text"
+              class="form-control"
+              id="fistName"
+              placeholder="Description"
+            />
+          </div>
+        </div>
+        <button class="btn btn-raised btn-primary" type="submit" value="Submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<style></style>
+
+<script>
+export default {
+  name: "postForm",
+  data: function() {
+    return {
+      newMeme: {
+        description: "",
+        image: ""
+      }
+    };
+  },
+  created: function() {},
+  methods: {
+    update() {
+      var params = new FormData();
+      params.append("image", this.newMeme.image || this.data.image);
+      params.append(
+        "description",
+        this.newMeme.description || this.data.description
+      );
+      console.log(params);
+    }
+  }
+};
+</script>

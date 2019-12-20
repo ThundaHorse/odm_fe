@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <div v-for="(post, idx) in posts" :key="idx">
-        <p>{{ post.description }}</p>
+        <p>"{{ post.description }}" by {{ post.poster }}</p>
         <img class="postImage" :src="post.image_url" :alt="post.description" />
       </div>
     </div>

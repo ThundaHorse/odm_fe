@@ -6,10 +6,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    posts: []
+    posts: [],
+    user: [],
+    userPosts: []
   },
   getters: {
-    allPosts: state => state.posts
+    allPosts: state => state.posts,
+    getUser: state => state.user,
+    userPosts: state => state.userPosts
   },
   actions: {
     fetchPosts({ commit }) {
@@ -32,11 +36,30 @@ export default new Vuex.Store({
         .catch(e => {
           console.log(e);
         });
+    },
+    fetchUser({ commit }) {
+      let user = [];
+      axios
+        .get("/api/users/" + parseInt(localStorage.getItem("user_id")))
+        .then(response => {
+          user = response.data;
+          commit("setUser", user);
+        });
+    },
+    fetchUserPosts({ commit }) {
+      let userPosts = [];
+      axios
+        .get("/api/posts/user/" + parseInt(localStorage.getItem("user_id")))
+        .then(response => {
+          userPosts = response.data;
+          commit("setUserPosts", userPosts);
+        });
     }
   },
   mutations: {
-    setPosts: (state, posts) => (state.posts = posts)
-    // addPost: (posts) => ()
+    setPosts: (state, posts) => (state.posts = posts),
+    setUser: (state, user) => (state.user = user),
+    setUserPosts: (state, userPosts) => (state.userPosts = userPosts)
   },
   modules: {}
 });

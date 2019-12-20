@@ -1,15 +1,9 @@
 <template>
   <div class="home">
     <div class="container">
-      <div class="container">
-        <div v-for="(post, idx) in posts" :key="idx">
-          <p>{{ post.description }}</p>
-          <img
-            class="postImage"
-            :src="post.image_url"
-            :alt="post.description"
-          />
-        </div>
+      <div v-for="(post, idx) in posts" :key="idx">
+        <p>{{ post.description }}</p>
+        <img class="postImage" :src="post.image_url" :alt="post.description" />
       </div>
     </div>
     <hr />
@@ -39,10 +33,15 @@ export default {
     ...mapActions(["fetchPosts"])
   },
   created() {
-    this.fetchPosts();
-    axios.get("/api/posts").then(response => {
-      this.posts = response.data;
-    });
+    if (localStorage.getItem("jwt")) {
+      this.fetchPosts();
+      axios.get("/api/posts").then(response => {
+        this.posts = response.data;
+      });
+    } else {
+      alert("Sign in to view posts");
+      this.$router.push("/login");
+    }
   }
 };
 </script>

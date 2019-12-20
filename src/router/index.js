@@ -3,6 +3,10 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import NewPost from "../components/posts/NewPost.vue";
 
+import Signup from "../components/users/Signup.vue";
+import Login from "../components/users/Login.vue";
+import Logout from "../components/users/Logout.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -12,9 +16,24 @@ const routes = [
     component: Home
   },
   {
+    path: "/login",
+    name: "login",
+    component: Login
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: Logout
+  },
+  {
     path: "/newPost",
     name: "newPost",
     component: NewPost
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: Signup
   }
   // {
   //   path: "/about",

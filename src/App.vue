@@ -37,11 +37,11 @@
                 class="dropdown-menu bg-dark"
                 aria-labelledby="navbarDropdown"
               >
-                <a class="dropdown-item text-white" href="#">Sign Up</a>
+                <a class="dropdown-item text-white" href="/signup">Sign Up</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white" href="#">Log In</a>
+                <a class="dropdown-item text-white" href="/login">Log In</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white" href="#">Log Out</a>
+                <a class="dropdown-item text-white" href="/logout">Log Out</a>
               </div>
             </li>
           </ul>

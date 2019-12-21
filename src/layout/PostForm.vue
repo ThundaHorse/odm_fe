@@ -93,6 +93,7 @@ export default {
   },
   created: function() {},
   methods: {
+    ...mapActions(["addPost"]),
     setFile: function() {
       if (event.target.files.length > 0) {
         this.newMeme.image = event.target.files[0];
@@ -104,8 +105,7 @@ export default {
       params.append("description", this.newMeme.description);
       params.append("user_id", this.newMeme.user_id);
       this.addPost(params);
-    },
-    ...mapActions(["addPost"])
+    }
   }
 };
 </script>

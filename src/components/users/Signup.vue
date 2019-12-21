@@ -74,7 +74,7 @@
             <label>
               <p class="label-txt">Password Confirmation</p>
               <input
-                v-model="newUserParams.passwordConfirmation"
+                v-model="newUserParams.password_confirmation"
                 type="password"
                 class="input"
               />
@@ -170,7 +170,7 @@ export default {
         email: "",
         phone_number: "",
         password: "",
-        passwordConfirmation: ""
+        password_confirmation: ""
       },
       errors: []
     };
@@ -179,14 +179,14 @@ export default {
   methods: {
     createUser() {
       if (
-        this.newUserParams.first.length > 0 &&
-        this.newUserParams.last.length > 0 &&
+        this.newUserParams.first_name.length > 0 &&
+        this.newUserParams.last_name.length > 0 &&
         this.newUserParams.email.length > 0 &&
-        this.newUserParams.phone.length > 0
+        this.newUserParams.phone_number.length > 0
       ) {
         if (
           this.newUserParams.password ===
-          this.newUserParams.passwordConfirmation
+          this.newUserParams.password_confirmation
         ) {
           axios
             .post("/api/users", this.newUserParams)
@@ -202,12 +202,12 @@ export default {
         }
       } else {
         alert("Please fill out all fields");
-        this.newUserParams.first = "";
-        this.newUserParams.last = "";
+        this.newUserParams.first_name = "";
+        this.newUserParams.last_name = "";
         this.newUserParams.email = "";
-        this.newUserParams.phone = "";
+        this.newUserParams.phone_number = "";
         this.newUserParams.password = "";
-        this.newUserParams.passwordConfirmation = "";
+        this.newUserParams.password_confirmation = "";
       }
     }
   }

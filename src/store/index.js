@@ -33,37 +33,36 @@ export default new Vuex.Store({
       });
       newP.push(newPost);
       try {
-        axios
-          .post("/api/posts", newPost)
-          .then(() => {
-            commit("setPosts", newP);
+        let temp = [];
+        axios.post("/api/posts", newPost).then(response => {
+          temp = response.data;
+          axios.post("/api/post/state/" + temp.post_id).then(() => {
             alert("Created post!");
-          })
-          .catch(e => {
-            console.log(e);
+            commit("setPosts", newP);
           });
+        });
       } catch (e) {
         console.log(e);
       }
     },
-    // async upVote({ commit }, id) {
-    //   try {
-    //     axios.patch("/api/post/upvote/" + id).then(response => {
-    //       console.log(response.data);
-    //     });
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // },
-    // async downVote({ commit }, id) {
-    //   try {
-    //     axios.patch("/api/post/downvote/" + id).then(response => {
-    //       console.log(response.data);
-    //     });
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // },
+    async upVote({ dispatch }, id) {
+      try {
+        axios.patch("/api/post/upvote/" + id).then(() => {
+          dispatch("fetchPosts");
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async downVote({ dispatch }, id) {
+      try {
+        axios.patch("/api/post/downvote/" + id).then(() => {
+          dispatch("fetchPosts");
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    },
     async fetchUser({ commit }) {
       let user = [];
       try {

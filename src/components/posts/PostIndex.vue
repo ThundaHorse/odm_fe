@@ -13,6 +13,8 @@
             <img :src="post.image_url" :alt="post.description" />
             <br />
             <p>{{ post.likes }} Likes | {{ post.dislikes }} Dislikes</p>
+            <p @click="upVote(post.id)">Upvote</p>
+            <p @click="downVote(post.id)">Downvote</p>
           </div>
         </div>
       </div>
@@ -29,6 +31,7 @@ img {
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import axios from "axios";
 
 export default {
   name: "PostIndex",
@@ -40,7 +43,19 @@ export default {
   },
   computed: mapGetters(["allPosts"]),
   methods: {
-    ...mapActions(["fetchPosts"])
+    ...mapActions(["fetchPosts"]),
+    upVote(id) {
+      axios.patch("/api/post/upvote/" + id).then(response => {
+        console.log(response.data);
+        this.fetchPosts();
+      });
+    },
+    downVote(id) {
+      axios.patch("/api/post/downvote/" + id).then(response => {
+        console.log(response.data);
+        this.fetchPosts();
+      });
+    }
   }
 };
 </script>

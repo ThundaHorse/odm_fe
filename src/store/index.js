@@ -46,6 +46,24 @@ export default new Vuex.Store({
         console.log(e);
       }
     },
+    // async upVote({ commit }, id) {
+    //   try {
+    //     axios.patch("/api/post/upvote/" + id).then(response => {
+    //       console.log(response.data);
+    //     });
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // },
+    // async downVote({ commit }, id) {
+    //   try {
+    //     axios.patch("/api/post/downvote/" + id).then(response => {
+    //       console.log(response.data);
+    //     });
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // },
     async fetchUser({ commit }) {
       let user = [];
       try {

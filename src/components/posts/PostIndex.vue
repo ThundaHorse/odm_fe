@@ -12,9 +12,17 @@
             <p class="text-center">by {{ post.poster }}</p>
             <img :src="post.image_url" :alt="post.description" />
             <br />
+            <font-awesome-icon
+              :icon="['fas', 'thumbs-up']"
+              @click="upVote(post.post_state.id)"
+              style="margin-right: 5px;"
+            />
+            <font-awesome-icon
+              :icon="['fas', 'thumbs-down']"
+              style="margin-left: 5px;"
+              @click="downVote(post.post_state.id)"
+            />
             <p>{{ post.likes }} Likes | {{ post.dislikes }} Dislikes</p>
-            <p @click="upVote(post.post_state.id)">Upvote</p>
-            <p @click="downVote(post.post_state.id)">Downvote</p>
           </div>
         </div>
       </div>

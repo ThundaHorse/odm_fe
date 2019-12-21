@@ -5,23 +5,34 @@
         <div class="container">
           <div v-for="(post, idx) in allPosts" :key="idx">
             <br />
-            <h3 class="text-center">
-              <strong>"{{ post.description }}"</strong>
-            </h3>
-            <p class="text-center">by {{ post.poster }}</p>
-            <img :src="post.image_url" :alt="post.description" />
-            <br />
-            <font-awesome-icon
-              :icon="['fas', 'thumbs-up']"
-              @click="upVote(post.post_state.id)"
-              style="margin-right: 5px;"
-            />
-            <font-awesome-icon
-              :icon="['fas', 'thumbs-down']"
-              style="margin-left: 5px;"
-              @click="downVote(post.post_state.id)"
-            />
-            <p>{{ post.likes }} Likes | {{ post.dislikes }} Dislikes</p>
+            <div class="card text-white bg-secondary border-info mb-3 mt-3">
+              <div class="card-header">
+                <h2>
+                  <strong>"{{ post.description }}"</strong>
+                </h2>
+              </div>
+              <div class="card-body bg-dark">
+                <blockquote class="blockquote mb-0">
+                  <img :src="post.image_url" :alt="post.description" />
+                  <footer class="blockquote-footer">
+                    <p class="text-center text-white">by {{ post.poster }}</p>
+                    <font-awesome-icon
+                      :icon="['fas', 'thumbs-up']"
+                      @click="upVote(post.post_state.id)"
+                      style="margin-right: 5px; color: white;"
+                    />
+                    <font-awesome-icon
+                      :icon="['fas', 'thumbs-down']"
+                      @click="downVote(post.post_state.id)"
+                      style="margin-left: 5px; color: white;"
+                    />
+                    <p class="text-white">
+                      {{ post.likes }} Likes | {{ post.dislikes }} Dislikes
+                    </p>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -94,7 +94,12 @@ export default {
       errors: []
     };
   },
-  created: function() {},
+  created: function() {
+    if (!localStorage.getItem("jwt")) {
+      alert("Sign in to post!");
+      this.$router.push("/login");
+    }
+  },
   methods: {
     ...mapActions(["addPost"]),
     setFile: function() {

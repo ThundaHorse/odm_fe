@@ -18,7 +18,6 @@
 </style>
 
 <script>
-import axios from "axios";
 import MainFooter from "./layout/MainFooter";
 import MainHeader from "./layout/MainHeader";
 
@@ -30,14 +29,6 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    logOut() {
-      delete axios.defaults.headers.common["Authorizations"];
-      localStorage.removeItem("jwt");
-      localStorage.removeItem("user_id");
-      alert("Logged out successfully");
-      this.$router.push("/login");
-    }
-  }
+  methods: {}
 };
 </script>

@@ -1,8 +1,7 @@
 <template>
   <div class="login">
-    <br />
-    <h1>Log In</h1>
     <div class="container">
+      <h1>Log In</h1>
       <ul v-for="(err, idx) in errors" :key="idx">
         <li>{{ err }}</li>
       </ul>

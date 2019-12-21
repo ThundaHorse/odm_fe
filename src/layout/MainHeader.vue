@@ -69,12 +69,22 @@ nav {
 </style>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MainHeader",
   data: function() {
     return {};
   },
   created: function() {},
-  methods: {}
+  methods: {
+    logOut() {
+      delete axios.defaults.headers.common["Authorizations"];
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("user_id");
+      alert("Logged out successfully");
+      this.$router.push("/login");
+    }
+  }
 };
 </script>

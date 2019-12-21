@@ -8,7 +8,11 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.home {
+  margin-bottom: 110px;
+}
+</style>
 
 <script>
 import PostIndex from "../components/posts/PostIndex";

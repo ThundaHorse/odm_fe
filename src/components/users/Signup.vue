@@ -8,7 +8,11 @@
           <div class="form-group col-md-6">
             <label>
               <p class="label-txt">First Name</p>
-              <input v-model="newUserParams.first" type="text" class="input" />
+              <input
+                v-model="newUserParams.first_name"
+                type="text"
+                class="input"
+              />
               <div class="line-box">
                 <div class="line"></div>
               </div>
@@ -17,7 +21,11 @@
           <div class="form-group col-md-6">
             <label>
               <p class="label-txt">Last Name</p>
-              <input v-model="newUserParams.last" type="text" class="input" />
+              <input
+                v-model="newUserParams.last_name"
+                type="text"
+                class="input"
+              />
               <div class="line-box">
                 <div class="line"></div>
               </div>
@@ -37,7 +45,11 @@
           <div class="form-group col-md-4">
             <label>
               <p class="label-txt">Phone Number</p>
-              <input v-model="newUserParams.phone" type="text" class="input" />
+              <input
+                v-model="newUserParams.phone_number"
+                type="text"
+                class="input"
+              />
               <div class="line-box">
                 <div class="line"></div>
               </div>
@@ -153,10 +165,10 @@ export default {
   data: function() {
     return {
       newUserParams: {
-        first: "",
-        last: "",
+        first_name: "",
+        last_name: "",
         email: "",
-        phone: "",
+        phone_number: "",
         password: "",
         passwordConfirmation: ""
       },

@@ -34,7 +34,7 @@
   height: 110px;
   width: 100%;
   overflow: hidden;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 .footer-img {
   width: 10%;

@@ -86,7 +86,7 @@ export default {
       newMeme: {
         description: "",
         image: "",
-        user_id: 1
+        user_id: parseInt(localStorage.getItem("user_id"))
       },
       errors: []
     };

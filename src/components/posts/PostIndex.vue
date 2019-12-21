@@ -1,15 +1,18 @@
 <template>
   <div class="posts">
     <div class="container">
-      <hr />
-      <h1>Le Memes</h1>
+      <!-- <h1>Le Memes</h1> -->
       <div class="wrapper">
         <div class="container">
           <div v-for="(post, idx) in allPosts" :key="idx">
             <br />
-            <p>{{ post.description }}</p>
+            <h3 class="text-center">
+              <strong>"{{ post.description }}"</strong>
+            </h3>
+            <p class="text-center">by {{ post.poster }}</p>
             <img :src="post.image_url" :alt="post.description" />
             <br />
+            <p>{{ post.likes }} Likes | {{ post.dislikes }} Dislikes</p>
           </div>
         </div>
       </div>
@@ -20,7 +23,7 @@
 <style>
 img {
   height: auto;
-  width: 50%;
+  width: 80%;
 }
 </style>
 

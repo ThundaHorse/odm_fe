@@ -31,6 +31,11 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-12">
+            <a href="/signup">Need an account?</a>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
             <button class="btn btn-round btn-md btn-info">Submit</button>
           </div>
         </div>

@@ -41,7 +41,9 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-white" href="/login">Log In</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white" href="/logout">Log Out</a>
+                <a class="dropdown-item text-white" @click="logOut()"
+                  >Log Out</a
+                >
               </div>
             </li>
           </ul>
@@ -52,18 +54,18 @@
     <MainFooter />
   </div>
 </template>
-
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
 }
 </style>
 
 <script>
+import axios from "axios";
 import MainFooter from "./layout/MainFooter";
 
 export default {
@@ -72,6 +74,15 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    logOut() {
+      delete axios.defaults.headers.common["Authorizations"];
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("user_id");
+      alert("Logged out successfully");
+      this.$router.push("/login");
+    }
   }
 };
 </script>

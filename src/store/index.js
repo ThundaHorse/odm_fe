@@ -16,44 +16,61 @@ export default new Vuex.Store({
     userPosts: state => state.userPosts
   },
   actions: {
-    fetchPosts({ commit }) {
+    async fetchPosts({ commit }) {
       let data = [];
-      axios.get("/api/posts").then(response => {
-        data = response.data;
-      });
-      commit("setPosts", data);
+      try {
+        axios.get("/api/posts").then(response => {
+          data = response.data;
+          commit("setPosts", data);
+        });
+      } catch (e) {
+        console.log(e);
+      }
     },
-    addPost({ commit }, newPost) {
+    async addPost({ commit }, newPost) {
       let newP = this.state.posts.map(p => {
         return p;
       });
       newP.push(newPost);
-      axios
-        .post("/api/posts", newPost)
-        .then(() => {
-          commit("setPosts", newP);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      try {
+        axios
+          .post("/api/posts", newPost)
+          .then(() => {
+            commit("setPosts", newP);
+            alert("Created post!");
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      } catch (e) {
+        console.log(e);
+      }
     },
-    fetchUser({ commit }) {
+    async fetchUser({ commit }) {
       let user = [];
-      axios
-        .get("/api/users/" + parseInt(localStorage.getItem("user_id")))
-        .then(response => {
-          user = response.data;
-          commit("setUser", user);
-        });
+      try {
+        axios
+          .get("/api/users/" + parseInt(localStorage.getItem("user_id")))
+          .then(response => {
+            user = response.data;
+            commit("setUser", user);
+          });
+      } catch (e) {
+        console.log(e);
+      }
     },
-    fetchUserPosts({ commit }) {
+    async fetchUserPosts({ commit }) {
       let userPosts = [];
-      axios
-        .get("/api/posts/user/" + parseInt(localStorage.getItem("user_id")))
-        .then(response => {
-          userPosts = response.data;
-          commit("setUserPosts", userPosts);
-        });
+      try {
+        axios
+          .get("/api/posts/user/" + parseInt(localStorage.getItem("user_id")))
+          .then(response => {
+            userPosts = response.data;
+            commit("setUserPosts", userPosts);
+          });
+      } catch (e) {
+        console.log(e);
+      }
     }
   },
   mutations: {

@@ -1,27 +1,30 @@
 <template>
   <div class="postForm">
-    <h1>Placeholder</h1>
+    <h1>Upload a Meme</h1>
+    <br />
     <div class="container">
       <form v-on:submit.prevent="update()">
-        <div>
-          <label for="imageUpload"></label>
-          <input
-            class="form-control-file"
-            id="imageUpload"
-            type="file"
-            v-on:change="setFile($event)"
-            ref="fileInput"
-          />
+        <div class="wrapper">
+          <div class="file-upload">
+            <label for="imageUpload">¯\_(ツ)_/¯ </label>
+            <input
+              class="form-control-file"
+              id="imageUpload"
+              type="file"
+              v-on:change="setFile($event)"
+              ref="fileInput"
+            />
+          </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <p style="text-align: left; color: black;">First Name</p>
+          <div class="form-group col-md-12">
             <label for="description" class="bmd-label-placeholder"></label>
-            <input
+            <textarea
               v-model="newMeme.description"
               type="text"
               class="form-control"
               id="fistName"
+              rows="3"
               placeholder="Description"
             />
           </div>
@@ -34,7 +37,44 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.file-upload {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #ffffff;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #b1f4e8 50%, black 50%);
+  background-size: 100% 200%;
+  transition: all 1s;
+  color: black;
+  font-size: 30px;
+}
+.file-upload:hover {
+  background-position: 0 -100%;
+  color: #b1f4e8;
+}
+input[type="file"] {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+</style>
 
 <script>
 import { mapActions } from "vuex";

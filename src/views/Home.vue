@@ -1,47 +1,27 @@
 <template>
   <div class="home">
+    <hr />
     <div class="container">
-      <div v-for="(post, idx) in posts" :key="idx">
-        <p>"{{ post.description }}" by {{ post.poster }}</p>
-        <img class="postImage" :src="post.image_url" :alt="post.description" />
-      </div>
+      <PostIndex />
     </div>
     <hr />
   </div>
 </template>
 
-<style>
-.postImage {
-  max-width: 50%;
-  height: auto;
-}
-</style>
+<style></style>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import axios from "axios";
+import PostIndex from "../components/posts/PostIndex";
 
 export default {
   name: "home",
+  components: {
+    PostIndex
+  },
   data() {
-    return {
-      posts: []
-    };
+    return {};
   },
-  computed: mapGetters(["allPosts"]),
-  methods: {
-    ...mapActions(["fetchPosts"])
-  },
-  created() {
-    if (localStorage.getItem("jwt")) {
-      this.fetchPosts();
-      axios.get("/api/posts").then(response => {
-        this.posts = response.data;
-      });
-    } else {
-      alert("Sign in to view posts");
-      this.$router.push("/login");
-    }
-  }
+  methods: {},
+  created() {}
 };
 </script>

@@ -6,71 +6,70 @@
       <form v-on:submit.prevent="createUser()">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <p>First Name</p>
-            <label for="first" class="bmd-label-placeholder"></label>
-            <input
-              v-model="newUserParams.first"
-              type="text"
-              class="form-control"
-              placeholder="First Name"
-            />
+            <label>
+              <p class="label-txt">First Name</p>
+              <input v-model="newUserParams.first" type="text" class="input" />
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
           </div>
           <div class="form-group col-md-6">
-            <p>Last Name</p>
-            <label for="last" class="bmd-label-placeholder"></label>
-            <input
-              v-model="newUserParams.last"
-              type="text"
-              class="form-control"
-              placeholder="Last Name"
-            />
+            <label>
+              <p class="label-txt">Last Name</p>
+              <input v-model="newUserParams.last" type="text" class="input" />
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-8">
-            <p>Email Address</p>
-            <label for="email" class="bmd-label-placeholder"></label>
-            <input
-              v-model="newUserParams.email"
-              type="text"
-              class="form-control"
-              placeholder="Email Address"
-            />
+            <label>
+              <p class="label-txt">Email</p>
+              <input v-model="newUserParams.email" type="text" class="input" />
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
           </div>
           <div class="form-group col-md-4">
-            <p>Phone Number</p>
-            <label for="phone" class="bmd-label-placeholder"></label>
-            <input
-              v-model="newUserParams.phone"
-              type="text"
-              class="form-control"
-              placeholder="Phone Number"
-            />
+            <label>
+              <p class="label-txt">Phone Number</p>
+              <input v-model="newUserParams.phone" type="text" class="input" />
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <p>Password</p>
-            <label for="password" class="bmd-label-placeholder"></label>
-            <input
-              v-model="newUserParams.password"
-              type="password"
-              class="form-control"
-              placeholder="Password"
-            />
+            <label>
+              <p class="label-txt">Password</p>
+              <input
+                v-model="newUserParams.password"
+                type="password"
+                class="input"
+              />
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
           </div>
           <div class="form-group col-md-6">
-            <p>Confirm Password</p>
-            <label
-              for="passwordConfirmation"
-              class="bmd-label-placeholder"
-            ></label>
-            <input
-              v-model="newUserParams.passwordConfirmation"
-              type="password"
-              class="form-control"
-              placeholder="Confirm Password"
-            />
+            <label>
+              <p class="label-txt">Password Confirmation</p>
+              <input
+                v-model="newUserParams.passwordConfirmation"
+                type="password"
+                class="input"
+              />
+              <div class="line-box">
+                <div class="line"></div>
+              </div>
+            </label>
           </div>
         </div>
         <div class="form-row">
@@ -85,7 +84,66 @@
   </div>
 </template>
 
-<style></style>
+<style scoped>
+form {
+  border-radius: 3%;
+  width: 60%;
+  margin: 60px auto;
+  background: #52525296;
+  padding: 60px 120px 80px 120px;
+  opacity: 0.5;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+}
+form:hover {
+  opacity: 0.9;
+}
+.input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+label {
+  display: block;
+  position: relative;
+  margin: 40px 0px;
+}
+.label-txt {
+  position: absolute;
+  top: -1.6em;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  color: rgb(120, 120, 120);
+  transition: ease 0.3s;
+}
+.line-box {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #bcbcbc;
+}
+.line {
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #b1f4e8;
+  transition: ease 0.6s;
+}
+.input:focus + .line-box .line {
+  width: 100%;
+}
+.label-active {
+  top: -3em;
+}
+</style>
 
 <script>
 import axios from "axios";
@@ -140,8 +198,6 @@ export default {
         this.newUserParams.passwordConfirmation = "";
       }
     }
-    // validatePhone(input) {},
-    // validateEmail(input) {}
   }
 };
 </script>

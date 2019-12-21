@@ -1,29 +1,43 @@
 <template>
   <div class="posts">
     <div class="container">
-      <div v-for="(post, idx) in allPosts" :key="idx">
-        <p>{{ post.description }}</p>
+      <hr />
+      <h1>Le Memes</h1>
+      <div class="wrapper">
+        <div class="container">
+          <div v-for="(post, idx) in allPosts" :key="idx">
+            <br />
+            <p>{{ post.description }}</p>
+            <img :src="post.image_url" :alt="post.description" />
+            <br />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style></style>
+<style>
+img {
+  height: auto;
+  width: 50%;
+}
+</style>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "posts",
+  name: "PostIndex",
   data() {
     return {};
+  },
+  created: function() {
+    this.fetchPosts();
   },
   computed: mapGetters(["allPosts"]),
   methods: {
     ...mapActions(["fetchPosts"])
-  },
-  created() {
-    this.fetchPosts();
   }
 };
 </script>

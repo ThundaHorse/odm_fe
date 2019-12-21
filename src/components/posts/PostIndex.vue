@@ -1,7 +1,6 @@
 <template>
   <div class="posts">
     <div class="container">
-      <!-- <h1>Le Memes</h1> -->
       <div class="wrapper">
         <div class="container">
           <div v-for="(post, idx) in allPosts" :key="idx">

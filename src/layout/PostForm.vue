@@ -38,6 +38,9 @@
 </template>
 
 <style>
+.postForm {
+  height: auto;
+}
 .wrapper {
   width: 100%;
   height: 100%;

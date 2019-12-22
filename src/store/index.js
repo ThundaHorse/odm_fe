@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -39,6 +40,7 @@ export default new Vuex.Store({
           axios.post("/api/post/state/" + temp.post_id).then(() => {
             alert("Created post!");
             commit("setPosts", newP);
+            router.push("/");
           });
         });
       } catch (e) {

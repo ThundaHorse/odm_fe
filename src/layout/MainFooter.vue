@@ -16,6 +16,7 @@
 .navbar {
   border-top: #333a40 1px solid;
   margin-bottom: 0;
+  position: relative;
   opacity: 0.7;
   background-color: #9ae0d3;
 }

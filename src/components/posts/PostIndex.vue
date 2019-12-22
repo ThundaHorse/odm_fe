@@ -1,9 +1,15 @@
 <template>
   <div class="posts">
     <div v-if="allPosts.length === 0">
-      <h1>There are no posts yet... :[</h1>
+      <div class="jumbotron" style="background: inherit;">
+        <div class="container">
+          <div class="justify-content-md-center">
+            <h1 style="margin-top: 30%;">There are no posts yet... :[</h1>
+          </div>
+        </div>
+      </div>
     </div>
-    <div v-else class="container justify-content-center">
+    <div v-else class="container justify-content-center mt-4">
       <br />
       <div
         class="card text-white bg-secondary border-info mb-1 mt-4"
@@ -67,8 +73,11 @@
 </template>
 
 <style>
+.jumbotron {
+  height: 50vh;
+}
 img {
-  max-height: auto;
+  height: auto;
   width: 60%;
 }
 .left {

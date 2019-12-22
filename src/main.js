@@ -16,8 +16,8 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:3000/"
-    : "https://mysterious-cove-60612.herokuapp.com";
+    ? "http://localhost:3000"
+    : "https://damp-temple-17173.herokuapp.com/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {

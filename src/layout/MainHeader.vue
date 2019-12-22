@@ -2,7 +2,7 @@
   <div class="header">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <router-link to="/" class="navbar-brand">ODM</router-link>
+        <router-link to="/" class="navbar-brand">Our Daily Memes</router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -15,12 +15,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item active"> -->
-            <!-- <router-link class="nav-link" to="/newPost"
-                >New Post<span class="sr-only">(current)</span></router-link
-              > -->
-            <!-- </li> -->
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -47,13 +42,6 @@
               </div>
             </li>
           </ul>
-          <span class="navbar-text">
-            <button class="btn btn-sm btn-info btn-round">
-              <router-link class="nav-link" to="/newPost"
-                >New Post +<span class="sr-only">(current)</span></router-link
-              >
-            </button>
-          </span>
         </div>
       </div>
     </nav>

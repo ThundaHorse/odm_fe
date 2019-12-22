@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <hr />
+    <!-- <hr /> -->
     <div class="container">
       <PostIndex />
     </div>
-    <hr />
+    <!-- <hr /> -->
   </div>
 </template>
 

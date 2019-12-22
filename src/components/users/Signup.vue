@@ -117,6 +117,7 @@ form:hover {
   background: transparent;
   border: none;
   outline: none;
+  color: white;
 }
 label {
   display: block;
@@ -154,6 +155,9 @@ label {
 }
 .label-active {
   top: -3em;
+}
+p.label-txt {
+  color: white;
 }
 </style>
 

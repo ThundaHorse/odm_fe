@@ -1,10 +1,8 @@
 <template>
   <div class="home">
-    <!-- <hr /> -->
     <div class="container">
       <PostIndex />
     </div>
-    <!-- <hr /> -->
   </div>
 </template>
 

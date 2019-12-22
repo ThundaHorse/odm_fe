@@ -4,10 +4,14 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faThumbsUp,
+  faThumbsDown,
+  faCommentDots
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faThumbsUp, faThumbsDown);
+library.add(faThumbsUp, faThumbsDown, faCommentDots);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 axios.defaults.baseURL =

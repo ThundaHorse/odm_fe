@@ -1,39 +1,66 @@
 <template>
   <div class="posts">
-    <div class="container">
-      <div class="wrapper">
-        <div class="container">
-          <div v-for="(post, idx) in allPosts" :key="idx">
-            <br />
-            <div class="card text-white bg-secondary border-info mb-3 mt-3">
-              <div class="card-header">
-                <h2>
-                  <strong>"{{ post.description }}"</strong>
-                </h2>
-              </div>
-              <div class="card-body bg-dark">
-                <blockquote class="blockquote mb-0">
-                  <img :src="post.image_url" :alt="post.description" />
-                  <footer class="blockquote-footer">
-                    <p class="text-center text-white">by {{ post.poster }}</p>
+    <div class="container justify-content-center">
+      <br />
+      <div
+        class="card text-white bg-secondary border-info mb-1 mt-4"
+        style="max-width: 1000px;"
+        v-for="(post, idx) in allPosts"
+        :key="idx"
+      >
+        <div class="card-header">
+          <h2>
+            <strong>{{ post.description }}</strong>
+          </h2>
+        </div>
+        <div class="card-body bg-dark">
+          <blockquote class="blockquote mb-0">
+            <img :src="post.image_url" :alt="post.description" />
+            <footer class="blockquote-footer">
+              <p class="text-center text-white">by {{ post.poster }}</p>
+              <div class="d-flex justify-content-center">
+                <ul class="btn-vote left">
+                  {{
+                    post.likes
+                  }}
+                  <li>
                     <font-awesome-icon
+                      class="ico"
                       :icon="['fas', 'thumbs-up']"
                       @click="upVote(post.post_state.id)"
-                      style="margin-right: 5px; color: white;"
+                      style="margin-right: 5px; color: white; cursor: pointer;"
+                      size="lg"
                     />
+                  </li>
+                </ul>
+                <ul class="btn-vote left">
+                  {{
+                    post.dislikes
+                  }}
+                  <li>
                     <font-awesome-icon
+                      class="ico"
                       :icon="['fas', 'thumbs-down']"
                       @click="downVote(post.post_state.id)"
-                      style="margin-left: 5px; color: white;"
+                      style="margin-right: 5px; color: white; cursor: pointer;"
+                      size="lg"
                     />
-                    <p class="text-white">
-                      {{ post.likes }} Likes | {{ post.dislikes }} Dislikes
-                    </p>
-                  </footer>
-                </blockquote>
+                  </li>
+                </ul>
+                <ul class="btn-vote left">
+                  0
+                  <li>
+                    <font-awesome-icon
+                      class="ico"
+                      :icon="['fas', 'comment-dots']"
+                      style="margin-right: 5px; color: white; cursor: pointer;"
+                      size="lg"
+                    />
+                  </li>
+                </ul>
               </div>
-            </div>
-          </div>
+            </footer>
+          </blockquote>
         </div>
       </div>
     </div>
@@ -42,8 +69,22 @@
 
 <style>
 img {
-  height: auto;
-  width: 80%;
+  max-height: auto;
+  width: 60%;
+}
+.left {
+  box-sizing: border-box;
+  float: left !important;
+}
+.btn-vote li {
+  margin: 0 8px 0 0;
+  float: left;
+  list-style: none;
+}
+li {
+  display: list-item;
+  text-align: center;
+  list-style: none;
 }
 </style>
 

@@ -1,6 +1,9 @@
 <template>
   <div class="posts">
-    <div class="container justify-content-center">
+    <div v-if="allPosts.length === 0">
+      <h1>There are no posts yet... :[</h1>
+    </div>
+    <div v-else class="container justify-content-center">
       <br />
       <div
         class="card text-white bg-secondary border-info mb-1 mt-4"
@@ -20,35 +23,31 @@
               <p class="text-center text-white">by {{ post.poster }}</p>
               <div class="d-flex justify-content-center">
                 <ul class="btn-vote left">
-                  {{
-                    post.likes
-                  }}
+                  <span style="color:white;">{{ post.likes }}</span>
                   <li>
                     <font-awesome-icon
                       class="ico"
                       :icon="['fas', 'thumbs-up']"
                       @click="upVote(post.post_state.id)"
-                      style="margin-right: 5px; color: white; cursor: pointer;"
+                      style="margin-right: 5px; color: b1f4e8; cursor: pointer;"
                       size="lg"
                     />
                   </li>
                 </ul>
                 <ul class="btn-vote left">
-                  {{
-                    post.dislikes
-                  }}
+                  <span style="color:white;">{{ post.dislikes }}</span>
                   <li>
                     <font-awesome-icon
                       class="ico"
                       :icon="['fas', 'thumbs-down']"
                       @click="downVote(post.post_state.id)"
-                      style="margin-right: 5px; color: white; cursor: pointer;"
+                      style="margin-right: 5px; color: ff8657; cursor: pointer;"
                       size="lg"
                     />
                   </li>
                 </ul>
                 <ul class="btn-vote left">
-                  0
+                  <span style="color:white;">0</span>
                   <li>
                     <font-awesome-icon
                       class="ico"

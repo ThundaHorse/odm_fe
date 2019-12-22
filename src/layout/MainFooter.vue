@@ -1,12 +1,6 @@
 <template>
-  <nav class="navbar">
-    <div class="col-sm-6">
-      <p class="text-uppercase">
-        Made with
-        <img class="footer-img" src="../../public/vue.png" alt="Vue icon" />
-      </p>
-    </div>
-    <div class="col-sm-6">
+  <nav class="navbar fixed-bottom">
+    <div class="col-sm-12 mr-3 ml-3">
       <p>Our Daily Memes 🙏</p>
     </div>
   </nav>
@@ -18,10 +12,6 @@
   margin-bottom: 0;
   opacity: 0.7;
   background-color: #9ae0d3;
-}
-.footer-img {
-  width: 10%;
-  height: auto;
 }
 p {
   color: black;

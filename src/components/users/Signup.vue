@@ -177,6 +177,21 @@ export default {
   },
   created() {},
   methods: {
+    validatePhone(input) {
+      if (/\d+/gm.test(input)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    validateEmail(value) {
+      if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
     createUser() {
       if (
         this.newUserParams.first_name.length > 0 &&

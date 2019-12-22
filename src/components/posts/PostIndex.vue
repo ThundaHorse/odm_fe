@@ -1,7 +1,9 @@
 <template>
   <div class="posts">
     <div v-if="allPosts.length === 0">
-      <h1>There are no posts yet... :[</h1>
+      <div class="jumbotron">
+        <h1>There are no posts yet... :[</h1>
+      </div>
     </div>
     <div v-else class="container justify-content-center">
       <br />
@@ -67,6 +69,50 @@
 </template>
 
 <style>
+.jumbotron {
+  background-color: inherit;
+  margin-top: 250px;
+}
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    color: white;
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+    color: aquamarine;
+  }
+}
+@keyframes jumbotron {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    color: white;
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+    color: aquamarine;
+  }
+}
+.jumbotron {
+  -webkit-animation: rotating 4s linear infinite;
+  -moz-animation: rotating 4s linear infinite;
+  -ms-animation: rotating 4s linear infinite;
+  -o-animation: rotating 4s linear infinite;
+  animation: rotating 4s linear infinite;
+  color: aquamarine;
+}
 img {
   max-height: auto;
   width: 60%;

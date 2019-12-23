@@ -25,7 +25,8 @@ export default new Vuex.Store({
           commit("setPosts", data);
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
     async addPost({ commit }, newPost) {
@@ -44,7 +45,8 @@ export default new Vuex.Store({
           });
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
     async upVote({ dispatch }, id) {

@@ -1,12 +1,13 @@
 <template>
   <nav class="navbar fixed-bottom">
-    <div class="col-sm-6">
+    <div class="col-sm">
       <p class="text-uppercase">
         Made with
         <img class="footer-img" src="../../public/vue.png" alt="Vue icon" />
       </p>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm"></div>
+    <div class="col-sm">
       <p>Our Daily Memes 🙏</p>
     </div>
   </nav>

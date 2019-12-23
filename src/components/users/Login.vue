@@ -144,7 +144,6 @@ export default {
           this.email = "";
           this.password = "";
         });
-      console.log(params);
     }
   }
 };

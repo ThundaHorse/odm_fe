@@ -200,14 +200,12 @@ export default {
         ) {
           axios
             .post("/api/users", this.newUserParams)
-            .then(response => {
-              console.log(response.data);
+            .then(() => {
               alert("Signed up successfully!");
               this.$router.push("/");
             })
             .catch(errors => {
               this.errors = errors;
-              console.log(this.errors);
             });
         }
       } else {

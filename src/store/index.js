@@ -53,7 +53,8 @@ export default new Vuex.Store({
           dispatch("fetchPosts");
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
     async downVote({ dispatch }, id) {
@@ -62,7 +63,8 @@ export default new Vuex.Store({
           dispatch("fetchPosts");
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
     async fetchUser({ commit }) {
@@ -75,7 +77,8 @@ export default new Vuex.Store({
             commit("setUser", user);
           });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
     async fetchUserPosts({ commit }) {
@@ -88,7 +91,8 @@ export default new Vuex.Store({
             commit("setUserPosts", userPosts);
           });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     }
   },

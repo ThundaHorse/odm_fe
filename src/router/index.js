@@ -31,6 +31,14 @@ const routes = [
       )
   },
   {
+    path: "/post/:id",
+    name: "viewPost",
+    component: () =>
+      import(
+        /* webpackChunkName: "ViewPost" */ "../components/posts/ViewPost.vue"
+      )
+  },
+  {
     path: "/signup",
     name: "signup",
     // generates separate chunk for this route which lazy-loads when route is visited

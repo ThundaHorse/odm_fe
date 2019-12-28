@@ -47,7 +47,9 @@
                   >Log Out</a
                 >
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white bg-dark">Your Posts</a>
+                <a class="dropdown-item text-white bg-dark" href="/userPosts/"
+                  >Your Posts</a
+                >
               </div>
             </li>
           </ul>

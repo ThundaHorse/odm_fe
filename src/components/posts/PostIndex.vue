@@ -18,7 +18,7 @@
         :key="idx"
       >
         <div class="card-header">
-          <h2>
+          <h2 @click.prevent="postPage(post.id)">
             <strong>{{ post.description }}</strong>
           </h2>
         </div>
@@ -109,7 +109,10 @@ export default {
   },
   computed: mapGetters(["allPosts"]),
   methods: {
-    ...mapActions(["fetchPosts", "upVote", "downVote"])
+    ...mapActions(["fetchPosts", "upVote", "downVote"]),
+    postPage(input) {
+      this.$router.push("/post/" + input);
+    }
   }
 };
 </script>

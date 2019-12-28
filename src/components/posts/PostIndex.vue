@@ -18,7 +18,7 @@
         :key="idx"
       >
         <div class="card-header">
-          <h2 @click.prevent="postPage(post.id)" style="pointer: cursor;">
+          <h2 @click.prevent="postPage(post.id)" style="cursor: pointer;">
             <strong>{{ post.description }}</strong>
           </h2>
         </div>

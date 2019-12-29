@@ -64,6 +64,15 @@
           </div>
         </div>
       </transition-group>
+      <back-to-top bottom="50px" right="50px" visibleoffset="200">
+        <button type="button" class="btn btn-info btn-to-top">
+          <font-awesome-icon
+            class="ico"
+            :icon="['fas', 'chevron-circle-up']"
+            size="sm"
+          />
+        </button>
+      </back-to-top>
     </div>
   </div>
 </template>
@@ -100,6 +109,14 @@ li {
 .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
+}
+.btn-to-top {
+  width: 60px;
+  height: 60px;
+  padding: 10px 16px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 22px;
 }
 </style>
 

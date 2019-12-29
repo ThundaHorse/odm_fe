@@ -68,6 +68,10 @@
 li {
   list-style: none;
 }
+img {
+  height: auto;
+  width: 60%;
+}
 </style>
 
 <script>

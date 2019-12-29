@@ -4,7 +4,7 @@
       <transition-group name="slide-fade">
         <div
           v-for="(comment, index) in postComments"
-          :key="index"
+          :key="comment.id"
           :class="alternatingCards(index)"
         >
           <div class="card-header">
@@ -66,6 +66,15 @@
           Submit
         </button>
       </form>
+      <back-to-top bottom="50px" right="50px" visibleoffset="200">
+        <button type="button" class="btn btn-info btn-to-top">
+          <font-awesome-icon
+            class="ico"
+            :icon="['fas', 'chevron-circle-up']"
+            size="sm"
+          />
+        </button>
+      </back-to-top>
     </div>
   </div>
 </template>
@@ -108,6 +117,14 @@ li {
 .slide-fade-leave-to {
   transform: translateX(20px);
   opacity: 0;
+}
+.btn-to-top {
+  width: 60px;
+  height: 60px;
+  padding: 10px 16px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 22px;
 }
 </style>
 

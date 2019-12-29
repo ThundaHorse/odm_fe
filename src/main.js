@@ -3,16 +3,21 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "axios";
+import BackToTop from "vue-backtotop";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faThumbsUp,
   faThumbsDown,
-  faCommentDots
+  faCommentDots,
+  faChevronCircleUp
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faThumbsUp, faThumbsDown, faCommentDots);
+library.add(faThumbsUp, faThumbsDown, faCommentDots, faChevronCircleUp);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+
+Vue.use(BackToTop);
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development"

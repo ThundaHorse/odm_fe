@@ -1,8 +1,24 @@
 <template>
   <div id="app">
-    <MainHeader />
-    <router-view />
-    <MainFooter />
+    <transition
+      name="fade"
+      mode="out-in"
+      @beforeLeave="beforeLeave"
+      @enter="enter"
+      @afterEnter="afterEnter"
+    >
+      <MainHeader class="page-header" />
+    </transition>
+    <transition
+      name="fade"
+      mode="out-in"
+      @beforeLeave="beforeLeave"
+      @enter="enter"
+      @afterEnter="afterEnter"
+    >
+      <router-view />
+    </transition>
+    <MainFooter class="page-footer" />
   </div>
 </template>
 <style>
@@ -12,8 +28,27 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
-  width: 100vw;
-  height: 500vh;
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.page-header,
+.page-footer {
+  flex-shrink: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-property: height, opacity;
+  overflow: hidden;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>
 
@@ -27,8 +62,26 @@ export default {
     MainHeader
   },
   data() {
-    return {};
+    return {
+      prevHeight: 0
+    };
   },
-  methods: {}
+  methods: {
+    beforeLeave(element) {
+      this.prevHeight = getComputedStyle(element).height;
+    },
+    enter(element) {
+      const { height } = getComputedStyle(element);
+
+      element.style.height = this.prevHeight;
+
+      setTimeout(() => {
+        element.style.height = height;
+      });
+    },
+    afterEnter(element) {
+      element.style.height = "auto";
+    }
+  }
 };
 </script>

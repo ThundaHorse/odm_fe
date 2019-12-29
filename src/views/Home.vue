@@ -9,16 +9,8 @@
 <style>
 .home {
   margin-bottom: 110px;
+  flex-grow: 1;
 }
-/* .container {
-  display: flex;
-  position: absolute;
-  z-index: 2;
-  top: 120px;
-  right: -50px;
-  perspective: 66px;
-  transform: rotate(-36deg) skew(0deg, 20deg);
-} */
 </style>
 
 <script>

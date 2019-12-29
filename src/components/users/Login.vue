@@ -50,6 +50,9 @@
 </template>
 
 <style scoped>
+.login {
+  min-height: 100vh;
+}
 form {
   margin: 60px auto;
   text-align: center;

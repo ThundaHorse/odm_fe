@@ -1,33 +1,27 @@
 <template>
-  <nav class="navbar">
-    <div class="col-sm">
-      <p class="text-uppercase">
-        Made with
-        <img class="footer-img" src="../../public/vue.png" alt="Vue icon" />
-      </p>
+  <footer class="mt-4">
+    <div class="container-fluid py-3 text-center">
+      <!-- <div class="row">
+        <div class="col-md-3 text-left" />
+        <div class="col-md-6" />
+        <div class="col-md-3 text-right">
+          <h5 style="color: white;">Our Daily Memes 🙏</h5>
+        </div> -->
+      <!-- </div> -->
     </div>
-    <div class="col-sm"></div>
-    <div class="col-sm">
-      <p>Our Daily Memes 🙏</p>
-    </div>
-  </nav>
+  </footer>
 </template>
 
-<style scoped>
-.navbar {
-  border-top: #333a40 1px solid;
-  margin-bottom: 0;
-  position: relative;
+<style>
+/* footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  padding-top: 50px;
+  right: 0;
+  width: 100%;
   opacity: 0.7;
-  background-color: #9ae0d3;
-}
-.footer-img {
-  width: 10%;
-  height: auto;
-}
-p {
-  color: black;
-}
+} */
 </style>
 
 <script>

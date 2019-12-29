@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <div class="container">
+    <div class="container mb-2">
       <form class="card text-white bg-dark" v-on:submit.prevent="createUser()">
         <div class="card-header"><h1>Sign Up</h1></div>
         <div class="card-body">
@@ -99,13 +99,14 @@
           </div>
         </div>
       </form>
-      <br />
-      <br />
     </div>
   </div>
 </template>
 
 <style scoped>
+.signup {
+  min-height: 100vh;
+}
 form {
   margin: 60px auto;
   background: #52525296;

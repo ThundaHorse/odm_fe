@@ -12,10 +12,10 @@
     <div v-else class="container justify-content-center mt-4">
       <br />
       <div
+        v-for="post in allPosts"
+        :key="post.id"
         class="card text-white bg-secondary border-info mb-1 mt-4"
         style="max-width: 1000px;"
-        v-for="(post, idx) in allPosts"
-        :key="idx"
       >
         <div class="card-header">
           <h2>

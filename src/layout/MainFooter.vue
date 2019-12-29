@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-bottom">
+  <nav class="navbar">
     <div class="col-sm">
       <p class="text-uppercase">
         Made with
@@ -17,7 +17,7 @@
 .navbar {
   border-top: #333a40 1px solid;
   margin-bottom: 0;
-  position: absolute;
+  position: relative;
   opacity: 0.7;
   background-color: #9ae0d3;
 }

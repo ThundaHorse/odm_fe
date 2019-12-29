@@ -53,7 +53,7 @@
                   </li>
                 </ul>
                 <ul class="btn-vote left">
-                  <span style="color:white;">0</span>
+                  <span style="color:white;">{{ commentCount(post) }}</span>
                   <li>
                     <font-awesome-icon
                       class="ico"
@@ -112,6 +112,17 @@ export default {
     ...mapActions(["fetchPosts", "upVote", "downVote"]),
     postPage(input) {
       this.$router.push("/post/" + input);
+    },
+    commentCount(post) {
+      let postComments = 0;
+      try {
+        if (post.comments.length > 0) {
+          postComments = post.comments.length;
+        }
+        return postComments;
+      } catch (e) {
+        return;
+      }
     }
   }
 };

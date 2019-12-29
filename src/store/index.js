@@ -94,6 +94,20 @@ export default new Vuex.Store({
         // console.log(e);
         return;
       }
+    },
+    async addComment({ dispatch }, comment) {
+      try {
+        if (comment.body.length <= 0) {
+          alert("Enter a comment before submitting");
+        } else {
+          axios.post("/api/comments", comment).then(() => {
+            dispatch("fetchPost", comment.post_id);
+            comment.body = "";
+          });
+        }
+      } catch (e) {
+        return;
+      }
     }
   },
   mutations: {

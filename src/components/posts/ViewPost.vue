@@ -1,6 +1,6 @@
 <template>
   <div class="viewPost">
-    <div class="container" style="padding-top:100px;">
+    <div class="container" style="padding-top:30px;">
       <div class="card text-white bg-secondary border-info mb-1 mt-4">
         <div class="card-header">
           <h2>
@@ -39,7 +39,7 @@
                 </li>
               </ul>
               <ul class="btn-vote left">
-                <span style="color:white;">0</span>
+                <span style="color:white;">{{ this.commentCount() }}</span>
                 <li>
                   <font-awesome-icon
                     class="ico"
@@ -54,6 +54,10 @@
         </div>
       </div>
     </div>
+    <br />
+    <div class="container">
+      <Comments />
+    </div>
   </div>
 </template>
 
@@ -65,18 +69,34 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Comments from "../../layout/Comments";
 
 export default {
   name: "viewPost",
+  components: {
+    Comments
+  },
   data: function() {
-    return {};
+    return {
+      postComments: 0
+    };
   },
   created: function() {
     this.fetchPost(this.$route.params.id);
   },
   computed: mapGetters(["getPost"]),
   methods: {
-    ...mapActions(["fetchPost", "upVote", "downVote"])
+    ...mapActions(["fetchPost", "upVote", "downVote"]),
+    commentCount() {
+      try {
+        if (this.getPost.comments.length > 0) {
+          this.postComments = this.getPost.comments.length;
+        }
+        return this.postComments;
+      } catch (e) {
+        return;
+      }
+    }
   }
 };
 </script>

@@ -19,6 +19,8 @@
               />
             </div>
           </div>
+          <br />
+          <h4>{{ getFileName }}</h4>
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="description" class="bmd-label-placeholder"></label>
@@ -95,8 +97,15 @@ export default {
         image: "",
         user_id: parseInt(localStorage.getItem("user_id"))
       },
+      fileName: "",
+      selectedFile: "",
       errors: []
     };
+  },
+  computed: {
+    getFileName: function() {
+      return this.fileName;
+    }
   },
   created: function() {
     if (!localStorage.getItem("jwt")) {
@@ -109,6 +118,7 @@ export default {
     setFile: function() {
       if (event.target.files.length > 0) {
         this.newMeme.image = event.target.files[0];
+        this.fileName = event.target.files[0].name;
       }
     },
     update() {

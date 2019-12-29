@@ -7,6 +7,8 @@ module.exports = {
       "jest-transform-stub",
     "^.+\\.jsx?$": "babel-jest"
   },
+  collectCoverage: true,
+  collectCoverageFrom: ["src/**/*.{js,vue}", "!src/main.js"],
   transformIgnorePatterns: ["/node_modules/"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1"

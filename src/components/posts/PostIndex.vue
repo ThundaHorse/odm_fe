@@ -18,7 +18,7 @@
         :key="idx"
       >
         <div class="card-header">
-          <h2 @click.prevent="postPage(post.id)" style="cursor: pointer;">
+          <h2>
             <strong>{{ post.description }}</strong>
           </h2>
         </div>
@@ -59,6 +59,7 @@
                       class="ico"
                       :icon="['fas', 'comment-dots']"
                       style="margin-right: 5px; color: white; cursor: pointer;"
+                      @click.prevent="postPage(post.id)"
                       size="lg"
                     />
                   </li>

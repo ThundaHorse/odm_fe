@@ -9,11 +9,13 @@ export default new Vuex.Store({
   state: {
     posts: [],
     user: [],
-    post: []
+    post: [],
+    comments: []
   },
   getters: {
     allPosts: state => state.posts,
     getUser: state => state.user,
+    postComments: state => state.comments,
     getPost: state => state.post
   },
   actions: {
@@ -69,6 +71,24 @@ export default new Vuex.Store({
         return;
       }
     },
+    async upVoteComment({ dispatch }, id) {
+      try {
+        axios.patch("/api/comments/upvote/" + id).then(response => {
+          dispatch("fetchPost", response.data.post_id);
+        });
+      } catch (e) {
+        return;
+      }
+    },
+    async downVoteComment({ dispatch }, id) {
+      try {
+        axios.patch("/api/comments/downvote/" + id).then(response => {
+          dispatch("fetchPost", response.data.post_id);
+        });
+      } catch (e) {
+        return;
+      }
+    },
     async fetchUser({ commit }) {
       let user = [];
       try {
@@ -83,15 +103,26 @@ export default new Vuex.Store({
         return;
       }
     },
-    async fetchPost({ commit }, id) {
+    async fetchPost({ dispatch, commit }, id) {
       let post = [];
       try {
         axios.get("/api/posts/" + id).then(response => {
           post = response.data;
           commit("setPost", post);
+          dispatch("fetchComments", post.id);
         });
       } catch (e) {
-        // console.log(e);
+        return;
+      }
+    },
+    async fetchComments({ commit }, id) {
+      let postComments = [];
+      try {
+        axios.get("/api/comments/post/" + id).then(response => {
+          postComments = response.data;
+          commit("setComments", postComments);
+        });
+      } catch (e) {
         return;
       }
     },
@@ -113,6 +144,7 @@ export default new Vuex.Store({
   mutations: {
     setPosts: (state, posts) => (state.posts = posts),
     setUser: (state, user) => (state.user = user),
+    setComments: (state, comments) => (state.comments = comments),
     setPost: (state, post) => (state.post = post)
   },
   modules: {}

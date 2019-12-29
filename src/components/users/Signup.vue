@@ -202,7 +202,7 @@ export default {
             .post("/api/users", this.newUserParams)
             .then(() => {
               alert("Signed up successfully!");
-              this.$router.push("/");
+              this.$router.push("/login");
             })
             .catch(errors => {
               this.errors = errors;

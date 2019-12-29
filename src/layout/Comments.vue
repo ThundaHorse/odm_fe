@@ -2,7 +2,7 @@
   <div class="comments">
     <div class="container">
       <div
-        v-for="(comment, index) in getPost.comments"
+        v-for="(comment, index) in postComments"
         :key="index"
         :class="alternatingCards(index)"
       >
@@ -17,6 +17,33 @@
           <div class="form-row">
             <p>{{ comment.body }}</p>
           </div>
+        </div>
+        <div class="card-footer">
+          <p style="float:left;">{{ comment.updated }}</p>
+          <ul class="btn-vote right">
+            <span style="color:white;">{{ comment.dislikes }}</span>
+            <li>
+              <font-awesome-icon
+                class="ico"
+                :icon="['fas', 'thumbs-down']"
+                @click.prevent="downVoteComment(comment.id)"
+                style="margin-left: 5px; color: ff8657; cursor: pointer;"
+                size="lg"
+              />
+            </li>
+          </ul>
+          <ul class="btn-vote right">
+            <span style="color:white;">{{ comment.likes }}</span>
+            <li>
+              <font-awesome-icon
+                class="ico"
+                :icon="['fas', 'thumbs-up']"
+                @click.prevent="upVoteComment(comment.id)"
+                style="margin-left: 5px; color: b1f4e8; cursor: pointer;"
+                size="lg"
+              />
+            </li>
+          </ul>
         </div>
       </div>
       <br />
@@ -55,6 +82,20 @@ textarea:focus {
   background: transparent;
   color: white;
 }
+.right {
+  box-sizing: border-box;
+  float: right !important;
+}
+.btn-vote li {
+  margin: 0 0 0 8px;
+  float: right;
+  list-style: none;
+}
+li {
+  display: list-item;
+  text-align: center;
+  list-style: none;
+}
 </style>
 
 <script>
@@ -72,10 +113,17 @@ export default {
   },
   created: function() {
     this.fetchPost(this.$route.params.id);
+    // this.fetchComments(this.$route.params.id);
   },
-  computed: mapGetters(["getPost"]),
+  computed: mapGetters(["postComments", "getPost"]),
   methods: {
-    ...mapActions(["fetchPost", "addComment"]),
+    ...mapActions([
+      "fetchComments",
+      "fetchPost",
+      "addComment",
+      "upVoteComment",
+      "downVoteComment"
+    ]),
     alternatingCards(i) {
       if (i % 2 !== 0) {
         return "card text-white bg-dark border-info mb-1 mt-2";

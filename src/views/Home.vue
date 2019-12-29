@@ -8,8 +8,7 @@
 
 <style>
 .home {
-  margin-bottom: 110px;
-  flex-grow: 1;
+  min-height: 85vh;
 }
 </style>
 

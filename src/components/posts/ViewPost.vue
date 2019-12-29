@@ -65,6 +65,9 @@
 .userPosts {
   padding-top: 100px;
 }
+li {
+  list-style: none;
+}
 </style>
 
 <script>

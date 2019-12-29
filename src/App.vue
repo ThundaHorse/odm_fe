@@ -6,7 +6,6 @@
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>
-    <MainFooter class="page-footer" />
   </div>
 </template>
 <style>
@@ -16,15 +15,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
-  height: 100%;
+  min-height: 85vh;
 }
-.wrapper {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.page-header,
-.page-footer {
+.page-header {
   flex-shrink: 0;
 }
 .fade-enter-active,
@@ -41,15 +34,15 @@
 </style>
 
 <script>
-import MainFooter from "./layout/MainFooter";
 import MainHeader from "./layout/MainHeader";
 
 export default {
   components: {
-    MainFooter,
     MainHeader
   },
-  data() {},
+  data() {
+    return {};
+  },
   methods: {}
 };
 </script>

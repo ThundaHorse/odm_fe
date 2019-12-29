@@ -51,10 +51,10 @@
 
 <style scoped>
 .login {
-  min-height: 100vh;
+  min-height: 85vh;
 }
 form {
-  margin: 60px auto;
+  margin: 50px auto;
   text-align: center;
   background: #52525296;
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
@@ -73,7 +73,6 @@ label {
   position: relative;
   margin: 40px 0px;
 }
-
 .label-txt {
   position: absolute;
   top: -1.6em;
@@ -84,7 +83,6 @@ label {
   color: rgb(120, 120, 120);
   transition: ease 0.3s;
 }
-
 .line-box {
   position: relative;
   width: 100%;

@@ -1,51 +1,53 @@
 <template>
   <div class="comments">
     <div class="container">
-      <div
-        v-for="(comment, index) in postComments"
-        :key="index"
-        :class="alternatingCards(index)"
-      >
-        <div class="card-header">
-          <div class="form-row">
-            <p>
-              <strong>{{ comment.user }}</strong> says:
-            </p>
+      <transition-group name="slide-fade">
+        <div
+          v-for="(comment, index) in postComments"
+          :key="index"
+          :class="alternatingCards(index)"
+        >
+          <div class="card-header">
+            <div class="form-row">
+              <p>
+                <strong>{{ comment.user }}</strong> says:
+              </p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <p>{{ comment.body }}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p style="float:left;">{{ comment.updated }}</p>
+            <ul class="btn-vote right">
+              <span style="color:white;">{{ comment.dislikes }}</span>
+              <li>
+                <font-awesome-icon
+                  class="ico"
+                  :icon="['fas', 'thumbs-down']"
+                  @click.prevent="downVoteComment(comment.id)"
+                  style="margin-left: 5px; color: ff8657; cursor: pointer;"
+                  size="lg"
+                />
+              </li>
+            </ul>
+            <ul class="btn-vote right">
+              <span style="color:white;">{{ comment.likes }}</span>
+              <li>
+                <font-awesome-icon
+                  class="ico"
+                  :icon="['fas', 'thumbs-up']"
+                  @click.prevent="upVoteComment(comment.id)"
+                  style="margin-left: 5px; color: b1f4e8; cursor: pointer;"
+                  size="lg"
+                />
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card-body">
-          <div class="form-row">
-            <p>{{ comment.body }}</p>
-          </div>
-        </div>
-        <div class="card-footer">
-          <p style="float:left;">{{ comment.updated }}</p>
-          <ul class="btn-vote right">
-            <span style="color:white;">{{ comment.dislikes }}</span>
-            <li>
-              <font-awesome-icon
-                class="ico"
-                :icon="['fas', 'thumbs-down']"
-                @click.prevent="downVoteComment(comment.id)"
-                style="margin-left: 5px; color: ff8657; cursor: pointer;"
-                size="lg"
-              />
-            </li>
-          </ul>
-          <ul class="btn-vote right">
-            <span style="color:white;">{{ comment.likes }}</span>
-            <li>
-              <font-awesome-icon
-                class="ico"
-                :icon="['fas', 'thumbs-up']"
-                @click.prevent="upVoteComment(comment.id)"
-                style="margin-left: 5px; color: b1f4e8; cursor: pointer;"
-                size="lg"
-              />
-            </li>
-          </ul>
-        </div>
-      </div>
+      </transition-group>
       <br />
       <form @submit.prevent="addComment(newComment)">
         <div class="form-row">
@@ -96,6 +98,17 @@ li {
   text-align: center;
   list-style: none;
 }
+.slide-fade-enter-active {
+  transition: all 1.5s ease;
+}
+.slide-fade-leave-active {
+  transition: all 1.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
 </style>
 
 <script>
@@ -113,7 +126,6 @@ export default {
   },
   created: function() {
     this.fetchPost(this.$route.params.id);
-    // this.fetchComments(this.$route.params.id);
   },
   computed: mapGetters(["postComments", "getPost"]),
   methods: {

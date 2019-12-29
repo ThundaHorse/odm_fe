@@ -1,14 +1,12 @@
 <template>
   <div class="newPost">
-    <br />
-    <br />
     <PostForm />
   </div>
 </template>
 
 <style>
 .newPost {
-  min-height: 100vh;
+  min-height: 85;
 }
 </style>
 

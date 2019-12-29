@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <div class="container mb-2">
+    <div class="jumbotron" style="background-color: inherit;">
       <form class="card text-white bg-dark" v-on:submit.prevent="createUser()">
         <div class="card-header"><h1>Sign Up</h1></div>
         <div class="card-body">
@@ -105,10 +105,10 @@
 
 <style scoped>
 .signup {
-  min-height: 100vh;
+  min-height: 85vh;
 }
 form {
-  margin: 60px auto;
+  margin: 50px auto;
   background: #52525296;
   opacity: 0.7;
   text-align: center;

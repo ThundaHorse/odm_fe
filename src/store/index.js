@@ -47,7 +47,6 @@ export default new Vuex.Store({
           });
         });
       } catch (e) {
-        // console.log(e);
         return;
       }
     },

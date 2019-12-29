@@ -1,21 +1,9 @@
 <template>
   <div id="app">
-    <transition
-      name="fade"
-      mode="out-in"
-      @beforeLeave="beforeLeave"
-      @enter="enter"
-      @afterEnter="afterEnter"
-    >
+    <transition name="fade" mode="out-in">
       <MainHeader class="page-header" />
     </transition>
-    <transition
-      name="fade"
-      mode="out-in"
-      @beforeLeave="beforeLeave"
-      @enter="enter"
-      @afterEnter="afterEnter"
-    >
+    <transition name="fade" mode="out-in">
       <router-view />
     </transition>
     <MainFooter class="page-footer" />
@@ -61,27 +49,7 @@ export default {
     MainFooter,
     MainHeader
   },
-  data() {
-    return {
-      prevHeight: 0
-    };
-  },
-  methods: {
-    beforeLeave(element) {
-      this.prevHeight = getComputedStyle(element).height;
-    },
-    enter(element) {
-      const { height } = getComputedStyle(element);
-
-      element.style.height = this.prevHeight;
-
-      setTimeout(() => {
-        element.style.height = height;
-      });
-    },
-    afterEnter(element) {
-      element.style.height = "auto";
-    }
-  }
+  data() {},
+  methods: {}
 };
 </script>

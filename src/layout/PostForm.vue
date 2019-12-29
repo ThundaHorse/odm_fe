@@ -6,6 +6,7 @@
           <h1>Upload a Meme</h1>
         </div>
         <div class="card-body">
+          <br />
           <div class="wrapper">
             <div class="file-upload">
               <label for="imageUpload">¯\_(ツ)_/¯ </label>

@@ -3,6 +3,9 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <router-link to="/" class="navbar-brand">Our Daily Memes</router-link>
+        <button class="btn btn-round btn-sm btn-info">
+          <router-link to="/newpost" class="navbar-text">New Post</router-link>
+        </button>
         <button
           class="navbar-toggler"
           type="button"
@@ -32,13 +35,21 @@
                 class="dropdown-menu bg-dark"
                 aria-labelledby="navbarDropdown"
               >
-                <a class="dropdown-item text-white" href="/signup">Sign Up</a>
+                <a class="dropdown-item text-white bg-dark" href="/signup"
+                  >Sign Up</a
+                >
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white" href="/login">Log In</a>
+                <a class="dropdown-item text-white bg-dark" href="/login">
+                  Log In
+                </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white" @click="logOut()"
+                <a class="dropdown-item text-white bg-dark" @click="logOut()"
                   >Log Out</a
                 >
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-white bg-dark" href="/userPosts/"
+                  >Your Posts</a
+                > -->
               </div>
             </li>
           </ul>

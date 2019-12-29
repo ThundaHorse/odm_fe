@@ -1,46 +1,50 @@
 <template>
   <div class="postForm">
-    <h1>Upload a Meme</h1>
-    <br />
     <div class="container">
-      <form v-on:submit.prevent="update()">
-        <div class="wrapper">
-          <div class="file-upload">
-            <label for="imageUpload">¯\_(ツ)_/¯ </label>
-            <input
-              class="form-control-file"
-              id="imageUpload"
-              type="file"
-              v-on:change="setFile($event)"
-              ref="fileInput"
-            />
+      <form class="card text-white bg-dark mt-5" v-on:submit.prevent="update()">
+        <div class="card-header">
+          <h1>Upload a Meme</h1>
+        </div>
+        <div class="card-body">
+          <br />
+          <div class="wrapper">
+            <div class="file-upload">
+              <label for="imageUpload">¯\_(ツ)_/¯ </label>
+              <input
+                class="form-control-file"
+                id="imageUpload"
+                type="file"
+                v-on:change="setFile($event)"
+                ref="fileInput"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="description" class="bmd-label-placeholder"></label>
+              <textarea
+                v-model="newMeme.description"
+                type="text"
+                class="form-control"
+                id="fistName"
+                rows="3"
+                placeholder="Description"
+                style="background: transparent; color:white;"
+              />
+            </div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="description" class="bmd-label-placeholder"></label>
-            <textarea
-              v-model="newMeme.description"
-              type="text"
-              class="form-control"
-              id="fistName"
-              rows="3"
-              placeholder="Description"
-            />
-          </div>
+        <div class="card-footer">
+          <button class="btn btn-md btn-info" type="submit" value="Submit">
+            Submit
+          </button>
         </div>
-        <button class="btn btn-raised btn-primary" type="submit" value="Submit">
-          Submit
-        </button>
       </form>
     </div>
   </div>
 </template>
 
 <style>
-.postForm {
-  height: auto;
-}
 .wrapper {
   width: 100%;
   height: 100%;

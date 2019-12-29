@@ -9,12 +9,14 @@ export default new Vuex.Store({
   state: {
     posts: [],
     user: [],
-    userPosts: []
+    post: [],
+    comments: []
   },
   getters: {
     allPosts: state => state.posts,
     getUser: state => state.user,
-    userPosts: state => state.userPosts
+    postComments: state => state.comments,
+    getPost: state => state.post
   },
   actions: {
     async fetchPosts({ commit }) {
@@ -25,7 +27,8 @@ export default new Vuex.Store({
           commit("setPosts", data);
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
     async addPost({ commit }, newPost) {
@@ -44,7 +47,7 @@ export default new Vuex.Store({
           });
         });
       } catch (e) {
-        console.log(e);
+        return;
       }
     },
     async upVote({ dispatch }, id) {
@@ -53,7 +56,8 @@ export default new Vuex.Store({
           dispatch("fetchPosts");
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
     async downVote({ dispatch }, id) {
@@ -62,7 +66,26 @@ export default new Vuex.Store({
           dispatch("fetchPosts");
         });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
+      }
+    },
+    async upVoteComment({ dispatch }, id) {
+      try {
+        axios.patch("/api/comments/upvote/" + id).then(response => {
+          dispatch("fetchPost", response.data.post_id);
+        });
+      } catch (e) {
+        return;
+      }
+    },
+    async downVoteComment({ dispatch }, id) {
+      try {
+        axios.patch("/api/comments/downvote/" + id).then(response => {
+          dispatch("fetchPost", response.data.post_id);
+        });
+      } catch (e) {
+        return;
       }
     },
     async fetchUser({ commit }) {
@@ -75,27 +98,53 @@ export default new Vuex.Store({
             commit("setUser", user);
           });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        return;
       }
     },
-    async fetchUserPosts({ commit }) {
-      let userPosts = [];
+    async fetchPost({ dispatch, commit }, id) {
+      let post = [];
       try {
-        axios
-          .get("/api/posts/user/" + parseInt(localStorage.getItem("user_id")))
-          .then(response => {
-            userPosts = response.data;
-            commit("setUserPosts", userPosts);
-          });
+        axios.get("/api/posts/" + id).then(response => {
+          post = response.data;
+          commit("setPost", post);
+          dispatch("fetchComments", post.id);
+        });
       } catch (e) {
-        console.log(e);
+        return;
+      }
+    },
+    async fetchComments({ commit }, id) {
+      let postComments = [];
+      try {
+        axios.get("/api/comments/post/" + id).then(response => {
+          postComments = response.data;
+          commit("setComments", postComments);
+        });
+      } catch (e) {
+        return;
+      }
+    },
+    async addComment({ dispatch }, comment) {
+      try {
+        if (comment.body.length <= 0) {
+          alert("Enter a comment before submitting");
+        } else {
+          axios.post("/api/comments", comment).then(() => {
+            dispatch("fetchPost", comment.post_id);
+            comment.body = "";
+          });
+        }
+      } catch (e) {
+        return;
       }
     }
   },
   mutations: {
     setPosts: (state, posts) => (state.posts = posts),
     setUser: (state, user) => (state.user = user),
-    setUserPosts: (state, userPosts) => (state.userPosts = userPosts)
+    setComments: (state, comments) => (state.comments = comments),
+    setPost: (state, post) => (state.post = post)
   },
   modules: {}
 });

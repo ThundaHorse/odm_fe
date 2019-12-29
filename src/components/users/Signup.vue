@@ -1,94 +1,101 @@
 <template>
   <div class="signup">
-    <div class="container">
-      <h1>Sign Up</h1>
-      <hr />
-      <form v-on:submit.prevent="createUser()">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>
-              <p class="label-txt">First Name</p>
-              <input
-                v-model="newUserParams.first_name"
-                type="text"
-                class="input"
-              />
-              <div class="line-box">
-                <div class="line"></div>
-              </div>
-            </label>
+    <div class="container mb-2">
+      <form class="card text-white bg-dark" v-on:submit.prevent="createUser()">
+        <div class="card-header"><h1>Sign Up</h1></div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>
+                <p class="label-txt">First Name</p>
+                <input
+                  v-model="newUserParams.first_name"
+                  type="text"
+                  class="input"
+                />
+                <div class="line-box">
+                  <div class="line"></div>
+                </div>
+              </label>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                <p class="label-txt">Last Name</p>
+                <input
+                  v-model="newUserParams.last_name"
+                  type="text"
+                  class="input"
+                />
+                <div class="line-box">
+                  <div class="line"></div>
+                </div>
+              </label>
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label>
-              <p class="label-txt">Last Name</p>
-              <input
-                v-model="newUserParams.last_name"
-                type="text"
-                class="input"
-              />
-              <div class="line-box">
-                <div class="line"></div>
-              </div>
-            </label>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label>
+                <p class="label-txt">Email</p>
+                <input
+                  v-model="newUserParams.email"
+                  type="text"
+                  class="input"
+                />
+                <div class="line-box">
+                  <div class="line"></div>
+                </div>
+              </label>
+            </div>
+            <div class="form-group col-md-4">
+              <label>
+                <p class="label-txt">Phone Number</p>
+                <input
+                  v-model="newUserParams.phone_number"
+                  type="text"
+                  class="input"
+                />
+                <div class="line-box">
+                  <div class="line"></div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>
+                <p class="label-txt">Password</p>
+                <input
+                  v-model="newUserParams.password"
+                  type="password"
+                  class="input"
+                />
+                <div class="line-box">
+                  <div class="line"></div>
+                </div>
+              </label>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                <p class="label-txt">Password Confirmation</p>
+                <input
+                  v-model="newUserParams.password_confirmation"
+                  type="password"
+                  class="input"
+                />
+                <div class="line-box">
+                  <div class="line"></div>
+                </div>
+              </label>
+            </div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-8">
-            <label>
-              <p class="label-txt">Email</p>
-              <input v-model="newUserParams.email" type="text" class="input" />
-              <div class="line-box">
-                <div class="line"></div>
-              </div>
-            </label>
-          </div>
-          <div class="form-group col-md-4">
-            <label>
-              <p class="label-txt">Phone Number</p>
-              <input
-                v-model="newUserParams.phone_number"
-                type="text"
-                class="input"
-              />
-              <div class="line-box">
-                <div class="line"></div>
-              </div>
-            </label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>
-              <p class="label-txt">Password</p>
-              <input
-                v-model="newUserParams.password"
-                type="password"
-                class="input"
-              />
-              <div class="line-box">
-                <div class="line"></div>
-              </div>
-            </label>
-          </div>
-          <div class="form-group col-md-6">
-            <label>
-              <p class="label-txt">Password Confirmation</p>
-              <input
-                v-model="newUserParams.password_confirmation"
-                type="password"
-                class="input"
-              />
-              <div class="line-box">
-                <div class="line"></div>
-              </div>
-            </label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <button class="btn btn-round btn-primary" type="submit">
-              Submit
-            </button>
+        <div class="card-footer">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button class="btn btn-round btn-primary" type="submit">
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </form>
@@ -97,13 +104,13 @@
 </template>
 
 <style scoped>
+.signup {
+  min-height: 100vh;
+}
 form {
-  border-radius: 3%;
-  width: 60%;
   margin: 60px auto;
   background: #52525296;
-  padding: 60px 120px 80px 120px;
-  opacity: 0.5;
+  opacity: 0.7;
   text-align: center;
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
@@ -209,14 +216,12 @@ export default {
         ) {
           axios
             .post("/api/users", this.newUserParams)
-            .then(response => {
-              console.log(response.data);
+            .then(() => {
               alert("Signed up successfully!");
-              this.$router.push("/");
+              this.$router.push("/login");
             })
             .catch(errors => {
               this.errors = errors;
-              console.log(this.errors);
             });
         }
       } else {

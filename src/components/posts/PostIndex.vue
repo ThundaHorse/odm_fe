@@ -12,10 +12,10 @@
     <div v-else class="container justify-content-center mt-4">
       <br />
       <div
+        v-for="post in allPosts"
+        :key="post.id"
         class="card text-white bg-secondary border-info mb-1 mt-4"
         style="max-width: 1000px;"
-        v-for="(post, idx) in allPosts"
-        :key="idx"
       >
         <div class="card-header">
           <h2>
@@ -53,12 +53,13 @@
                   </li>
                 </ul>
                 <ul class="btn-vote left">
-                  <span style="color:white;">0</span>
+                  <span style="color:white;">{{ commentCount(post) }}</span>
                   <li>
                     <font-awesome-icon
                       class="ico"
                       :icon="['fas', 'comment-dots']"
                       style="margin-right: 5px; color: white; cursor: pointer;"
+                      @click.prevent="postPage(post.id)"
                       size="lg"
                     />
                   </li>
@@ -109,7 +110,21 @@ export default {
   },
   computed: mapGetters(["allPosts"]),
   methods: {
-    ...mapActions(["fetchPosts", "upVote", "downVote"])
+    ...mapActions(["fetchPosts", "upVote", "downVote"]),
+    postPage(input) {
+      this.$router.push("/post/" + input);
+    },
+    commentCount(post) {
+      let postComments = 0;
+      try {
+        if (post.comments.length > 0) {
+          postComments = post.comments.length;
+        }
+        return postComments;
+      } catch (e) {
+        return;
+      }
+    }
   }
 };
 </script>

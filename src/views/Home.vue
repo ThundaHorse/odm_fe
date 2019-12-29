@@ -1,16 +1,15 @@
 <template>
   <div class="home">
-    <!-- <hr /> -->
     <div class="container">
       <PostIndex />
     </div>
-    <!-- <hr /> -->
   </div>
 </template>
 
 <style>
 .home {
   margin-bottom: 110px;
+  flex-grow: 1;
 }
 </style>
 

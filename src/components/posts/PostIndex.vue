@@ -2,7 +2,10 @@
   <div class="posts">
     <Loading v-if="loading && allPosts" />
     <NoPosts v-if="!allPosts" />
-    <div v-else class="container justify-content-center mt-4">
+    <div
+      v-else-if="!loading && allPosts"
+      class="container justify-content-center mt-4"
+    >
       <br />
       <transition-group name="slide-fade">
         <div

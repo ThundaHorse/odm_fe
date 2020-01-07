@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <div class="jumbotron" style="background-color: inherit;">
+    <div v-if="!loading" class="jumbotron" style="background-color: inherit;">
       <form class="card text-white bg-dark" v-on:submit.prevent="createUser()">
         <div class="card-header"><h1>Sign Up</h1></div>
         <div class="card-body">
@@ -100,6 +100,7 @@
         </div>
       </form>
     </div>
+    <Loading v-if="loading" />
   </div>
 </template>
 
@@ -170,6 +171,7 @@ p.label-txt {
 
 <script>
 import axios from "axios";
+import Loading from "../loaders/Loading";
 
 export default {
   name: "signup",
@@ -183,41 +185,55 @@ export default {
         password: "",
         password_confirmation: ""
       },
-      errors: []
+      errors: [],
+      loading: false
     };
   },
-  created() {},
+  components: {
+    Loading
+  },
+  created() {
+    this.onLoad();
+  },
   methods: {
     createUser() {
-      if (
-        this.newUserParams.first_name.length > 0 &&
-        this.newUserParams.last_name.length > 0 &&
-        this.newUserParams.email.length > 0 &&
-        this.newUserParams.phone_number.length > 0
-      ) {
+      axios
+        .post("/api/users", this.newUserParams)
+        .then(() => {
+          alert("Signed up successfully!");
+          this.loading = true;
+        })
+        .catch(errors => {
+          this.errors = errors;
+        });
+    },
+    onLoad() {
+      this.loading = false;
+      setTimeout(() => {
         if (
-          this.newUserParams.password ===
-          this.newUserParams.password_confirmation
+          this.newUserParams.first_name.length > 0 &&
+          this.newUserParams.last_name.length > 0 &&
+          this.newUserParams.email.length > 0 &&
+          this.newUserParams.phone_number.length > 0
         ) {
-          axios
-            .post("/api/users", this.newUserParams)
-            .then(() => {
-              alert("Signed up successfully!");
-              this.$router.push("/login");
-            })
-            .catch(errors => {
-              this.errors = errors;
-            });
+          if (
+            this.newUserParams.password ===
+            this.newUserParams.password_confirmation
+          ) {
+            this.createUser();
+            this.$router.push("/login");
+          } else {
+            alert("Please fill out all fields");
+            this.newUserParams.first_name = "";
+            this.newUserParams.last_name = "";
+            this.newUserParams.email = "";
+            this.newUserParams.phone_number = "";
+            this.newUserParams.password = "";
+            this.newUserParams.password_confirmation = "";
+          }
         }
-      } else {
-        alert("Please fill out all fields");
-        this.newUserParams.first_name = "";
-        this.newUserParams.last_name = "";
-        this.newUserParams.email = "";
-        this.newUserParams.phone_number = "";
-        this.newUserParams.password = "";
-        this.newUserParams.password_confirmation = "";
-      }
+        this.loading = false;
+      }, 2000);
     }
   }
 };

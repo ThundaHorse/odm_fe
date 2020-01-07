@@ -2,9 +2,9 @@
   <div class="header">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <router-link to="/" class="navbar-brand">Our Daily Memes</router-link>
+        <a href="/" class="navbar-brand">Our Daily Memes</a>
         <button class="btn btn-round btn-sm btn-info">
-          <router-link to="/newpost" class="navbar-text">New Post</router-link>
+          <a href="/newpost" class="navbar-text">New Post</a>
         </button>
         <button
           class="navbar-toggler"

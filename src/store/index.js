@@ -19,6 +19,17 @@ export default new Vuex.Store({
     getPost: state => state.post
   },
   actions: {
+    async addUser({ commit }, userParams) {
+      try {
+        axios.post("/api/users", userParams).then(response => {
+          alert("Signed up successfully!");
+          commit("createUser", response.data);
+          router.push("/login");
+        });
+      } catch (e) {
+        alert(e);
+      }
+    },
     async fetchPosts({ commit }) {
       let data = [];
       try {

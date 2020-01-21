@@ -12,7 +12,10 @@ describe("Home.vue", () => {
 
   beforeEach(() => {
     getters = {
-      allPosts: jest.fn(() => store.state.posts)
+      allPosts: jest.fn(() => store.state.posts),
+      getUser: jest.fn(() => store.state.user),
+      postComments: jest.fn(() => store.state.comments),
+      getPost: jest.fn(() => store.state.post)
     };
 
     actions = {
@@ -28,7 +31,10 @@ describe("Home.vue", () => {
             user_id: 1,
             image: "..."
           }
-        ]
+        ],
+        user: [],
+        post: [],
+        comments: []
       },
       getters,
       actions

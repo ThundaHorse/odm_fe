@@ -99,6 +99,7 @@ export default {
       },
       fileName: "",
       selectedFile: "",
+      loading: false,
       errors: []
     };
   },
@@ -127,6 +128,10 @@ export default {
       params.append("description", this.newMeme.description);
       params.append("user_id", this.newMeme.user_id);
       this.addPost(params);
+      if (this.addPost(params) === 1) {
+        this.loading = true;
+        this.$router.push("/");
+      }
     }
   }
 };

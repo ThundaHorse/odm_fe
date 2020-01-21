@@ -53,11 +53,13 @@ export default new Vuex.Store({
           axios.post("/api/post/state/" + temp.post_id).then(() => {
             alert("Created post!");
             commit("setPosts", newP);
-            router.push("/");
+            // router.push("/");
+            return 1;
           });
         });
       } catch (e) {
         alert(e);
+        return 0;
       }
     },
     async upVote({ dispatch }, id) {

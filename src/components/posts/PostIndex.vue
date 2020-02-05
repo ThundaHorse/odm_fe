@@ -78,96 +78,96 @@
   </div>
 </template>
 
-<style>
-.jumbotron {
-  height: 50vh;
-}
-img {
-  height: auto;
-  width: 60%;
-}
-.left {
-  box-sizing: border-box;
-  float: left !important;
-}
-.btn-vote li {
-  margin: 0 8px 0 0;
-  float: left;
-  list-style: none;
-}
-li {
-  display: list-item;
-  text-align: center;
-  list-style: none;
-}
-.slide-fade-enter-active {
-  transition: all 1.5s ease;
-}
-.slide-fade-leave-active {
-  transition: all 1.5s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter,
-.slide-fade-leave-to {
-  transform: translateX(10px);
-  opacity: 0;
-}
-.btn-to-top {
-  width: 60px;
-  height: 60px;
-  padding: 10px 16px;
-  border-radius: 50%;
-  font-size: 22px;
-  line-height: 22px;
-}
-.finished {
-  display: none;
-}
-</style>
-
 <script>
-import { mapGetters, mapActions } from "vuex";
-import NoPosts from "./NoPosts.vue";
-import Loading from "../loaders/Loading";
+  import { mapGetters, mapActions } from "vuex";
+  import NoPosts from "./NoPosts.vue";
+  import Loading from "../loaders/Loading";
 
-export default {
-  name: "PostIndex",
-  data() {
-    return {
-      loading: true
-    };
-  },
-  components: {
-    NoPosts,
-    Loading
-  },
-  created: function() {
-    this.onLoad();
-  },
-  computed: mapGetters(["allPosts"]),
-  methods: {
-    ...mapActions(["fetchPosts", "upVote", "downVote"]),
-    postPage(input) {
-      this.$router.push("/post/" + input);
+  export default {
+    name: "PostIndex",
+    data() {
+      return {
+        loading: true
+      };
     },
-    commentCount(post) {
-      let postComments = 0;
-      try {
-        if (post.comments.length > 0) {
-          postComments = post.comments.length;
+    components: {
+      NoPosts,
+      Loading
+    },
+    created: function() {
+      this.onLoad();
+    },
+    computed: mapGetters(["allPosts"]),
+    methods: {
+      ...mapActions(["fetchPosts", "upVote", "downVote"]),
+      postPage(input) {
+        this.$router.push("/post/" + input);
+      },
+      commentCount(post) {
+        let postComments = 0;
+        try {
+          if (post.comments.length > 0) {
+            postComments = post.comments.length;
+          }
+          return postComments;
+        } catch (e) {
+          alert(e);
         }
-        return postComments;
-      } catch (e) {
-        alert(e);
+      },
+      onLoad() {
+        this.loading = true;
+        setTimeout(() => {
+          this.$store.dispatch("fetchPosts").then(() => {
+            this.loading = false;
+          });
+        }, 2000);
       }
-    },
-    onLoad() {
-      this.loading = true;
-      setTimeout(() => {
-        this.$store.dispatch("fetchPosts").then(() => {
-          this.loading = false;
-        });
-      }, 2000);
     }
-  }
-};
+  };
 </script>
+
+<style>
+  .jumbotron {
+    height: 50vh;
+  }
+  img {
+    height: auto;
+    width: 60%;
+  }
+  .left {
+    box-sizing: border-box;
+    float: left !important;
+  }
+  .btn-vote li {
+    margin: 0 8px 0 0;
+    float: left;
+    list-style: none;
+  }
+  li {
+    display: list-item;
+    text-align: center;
+    list-style: none;
+  }
+  .slide-fade-enter-active {
+    transition: all 1.5s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all 1.5s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+  .slide-fade-enter,
+  .slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  .btn-to-top {
+    width: 60px;
+    height: 60px;
+    padding: 10px 16px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 22px;
+  }
+  .finished {
+    display: none;
+  }
+</style>

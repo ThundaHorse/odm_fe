@@ -6,24 +6,24 @@
   </div>
 </template>
 
-<style>
-.home {
-  min-height: 85vh;
-}
-</style>
-
 <script>
-import PostIndex from "../components/posts/PostIndex";
+  import PostIndex from "../components/posts/PostIndex";
 
-export default {
-  name: "home",
-  components: {
-    PostIndex
-  },
-  data() {
-    return {};
-  },
-  methods: {},
-  created() {}
-};
+  export default {
+    name: "home",
+    components: {
+      PostIndex
+    },
+    data() {
+      return {};
+    },
+    methods: {},
+    created() {}
+  };
 </script>
+
+<style>
+  .home {
+    min-height: 85vh;
+  }
+</style>

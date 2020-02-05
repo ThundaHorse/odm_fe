@@ -49,6 +49,46 @@
   </div>
 </template>
 
+<script>
+import axios from "axios";
+
+export default {
+  name: "login",
+  data: function() {
+    return {
+      email: "",
+      password: "",
+      errors: []
+    };
+  },
+  created: function() {},
+  methods: {
+    signIn() {
+      let params = {
+        email: this.email,
+        password: this.password
+      };
+      axios
+        .post("/api/sessions", params)
+        .then(response => {
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
+
+          localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("user_id", response.data.user_id);
+
+          this.$router.push("/");
+        })
+        .catch(err => {
+          this.errors = err;
+          this.email = "";
+          this.password = "";
+        });
+    }
+  }
+};
+</script>
+
 <style scoped>
 .login {
   min-height: 85vh;
@@ -109,43 +149,3 @@ p.label-txt {
   color: white;
 }
 </style>
-
-<script>
-import axios from "axios";
-
-export default {
-  name: "login",
-  data: function() {
-    return {
-      email: "",
-      password: "",
-      errors: []
-    };
-  },
-  created: function() {},
-  methods: {
-    signIn() {
-      let params = {
-        email: this.email,
-        password: this.password
-      };
-      axios
-        .post("/api/sessions", params)
-        .then(response => {
-          axios.defaults.headers.common["Authorization"] =
-            "Bearer " + response.data.jwt;
-
-          localStorage.setItem("jwt", response.data.jwt);
-          localStorage.setItem("user_id", response.data.user_id);
-
-          this.$router.push("/");
-        })
-        .catch(err => {
-          this.errors = err;
-          this.email = "";
-          this.password = "";
-        });
-    }
-  }
-};
-</script>

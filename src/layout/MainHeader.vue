@@ -60,30 +60,30 @@
   </div>
 </template>
 
-<style>
-nav {
-  padding: 1rem;
-  border-bottom: #a8f3e5 1px solid;
-}
-</style>
-
 <script>
-import axios from "axios";
+  import axios from "axios";
 
-export default {
-  name: "MainHeader",
-  data: function() {
-    return {};
-  },
-  created: function() {},
-  methods: {
-    logOut() {
-      delete axios.defaults.headers.common["Authorizations"];
-      localStorage.removeItem("jwt");
-      localStorage.removeItem("user_id");
-      alert("Logged out successfully");
-      this.$router.push("/login");
+  export default {
+    name: "MainHeader",
+    data: function() {
+      return {};
+    },
+    created: function() {},
+    methods: {
+      logOut() {
+        delete axios.defaults.headers.common["Authorizations"];
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("user_id");
+        alert("Logged out successfully");
+        this.$router.push("/login");
+      }
     }
-  }
-};
+  };
 </script>
+
+<style>
+  nav {
+    padding: 1rem;
+    border-bottom: #a8f3e5 1px solid;
+  }
+</style>

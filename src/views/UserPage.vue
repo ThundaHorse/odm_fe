@@ -9,23 +9,21 @@
   </div>
 </template>
 
-<style></style>
-
 <script>
-import { mapGetters, mapActions } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
 
-export default {
-  name: "userPage",
-  data: function() {
-    return {};
-  },
-  computed: mapGetters(["getUser", "userPosts"]),
-  methods: {
-    ...mapActions(["fetchUser", "fetchUserPosts"])
-  },
-  created() {
-    this.fetchUser();
-    this.fetchUserPosts();
-  }
-};
+  export default {
+    name: "userPage",
+    data: function() {
+      return {};
+    },
+    computed: mapGetters(["getUser", "userPosts"]),
+    methods: {
+      ...mapActions(["fetchUser", "fetchUserPosts"])
+    },
+    created() {
+      this.fetchUser();
+      this.fetchUserPosts();
+    }
+  };
 </script>

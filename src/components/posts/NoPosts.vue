@@ -10,19 +10,19 @@
   </div>
 </template>
 
-<style>
-.jumbotron {
-  height: 50vh;
-}
-</style>
-
 <script>
-export default {
-  name: "noPosts",
-  data: function() {
-    return {};
-  },
-  created: function() {},
-  methods: {}
-};
+  export default {
+    name: "noPosts",
+    data: function() {
+      return {};
+    },
+    created: function() {},
+    methods: {}
+  };
 </script>
+
+<style>
+  .jumbotron {
+    height: 50vh;
+  }
+</style>

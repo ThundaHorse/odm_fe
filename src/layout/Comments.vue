@@ -79,87 +79,87 @@
   </div>
 </template>
 
-<style scoped>
-.card {
-  opacity: 0.7;
-}
-.card:hover {
-  opacity: 1;
-}
-textarea {
-  background: transparent;
-}
-textarea:focus {
-  background: transparent;
-  color: white;
-}
-.right {
-  box-sizing: border-box;
-  float: right !important;
-}
-.btn-vote li {
-  margin: 0 0 0 8px;
-  float: right;
-  list-style: none;
-}
-li {
-  display: list-item;
-  text-align: center;
-  list-style: none;
-}
-.slide-fade-enter-active {
-  transition: all 1.5s ease;
-}
-.slide-fade-leave-active {
-  transition: all 1.5s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter,
-.slide-fade-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
-}
-.btn-to-top {
-  width: 60px;
-  height: 60px;
-  padding: 10px 16px;
-  border-radius: 50%;
-  font-size: 22px;
-  line-height: 22px;
-}
-</style>
-
 <script>
-import { mapGetters, mapActions } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
 
-export default {
-  name: "comments",
-  data: function() {
-    return {
-      newComment: {
-        post_id: this.$route.params.id,
-        body: ""
-      }
-    };
-  },
-  created: function() {
-    this.fetchPost(this.$route.params.id);
-  },
-  computed: mapGetters(["postComments", "getPost"]),
-  methods: {
-    ...mapActions([
-      "fetchComments",
-      "fetchPost",
-      "addComment",
-      "upVoteComment",
-      "downVoteComment"
-    ]),
-    alternatingCards(i) {
-      if (i % 2 !== 0) {
-        return "card text-white bg-dark border-info mb-1 mt-2";
-      } else {
-        return "card text-white bg-secondary border-info mb-1 mt-2";
+  export default {
+    name: "comments",
+    data: function() {
+      return {
+        newComment: {
+          post_id: this.$route.params.id,
+          body: ""
+        }
+      };
+    },
+    created: function() {
+      this.fetchPost(this.$route.params.id);
+    },
+    computed: mapGetters(["postComments", "getPost"]),
+    methods: {
+      ...mapActions([
+        "fetchComments",
+        "fetchPost",
+        "addComment",
+        "upVoteComment",
+        "downVoteComment"
+      ]),
+      alternatingCards(i) {
+        if (i % 2 !== 0) {
+          return "card text-white bg-dark border-info mb-1 mt-2";
+        } else {
+          return "card text-white bg-secondary border-info mb-1 mt-2";
+        }
       }
     }
-  }
-};
+  };
 </script>
+
+<style scoped>
+  .card {
+    opacity: 0.7;
+  }
+  .card:hover {
+    opacity: 1;
+  }
+  textarea {
+    background: transparent;
+  }
+  textarea:focus {
+    background: transparent;
+    color: white;
+  }
+  .right {
+    box-sizing: border-box;
+    float: right !important;
+  }
+  .btn-vote li {
+    margin: 0 0 0 8px;
+    float: right;
+    list-style: none;
+  }
+  li {
+    display: list-item;
+    text-align: center;
+    list-style: none;
+  }
+  .slide-fade-enter-active {
+    transition: all 1.5s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all 1.5s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+  .slide-fade-enter,
+  .slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  .btn-to-top {
+    width: 60px;
+    height: 60px;
+    padding: 10px 16px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 22px;
+  }
+</style>

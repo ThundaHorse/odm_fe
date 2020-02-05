@@ -46,91 +46,91 @@
   </div>
 </template>
 
-<style>
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.file-upload {
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 4px solid #ffffff;
-  overflow: hidden;
-  background-image: linear-gradient(to bottom, #b1f4e8 50%, black 50%);
-  background-size: 100% 200%;
-  transition: all 1s;
-  color: black;
-  font-size: 30px;
-}
-.file-upload:hover {
-  background-position: 0 -100%;
-  color: #b1f4e8;
-}
-input[type="file"] {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-</style>
-
 <script>
-import { mapActions } from "vuex";
+  import { mapActions } from "vuex";
 
-export default {
-  name: "postForm",
-  data: function() {
-    return {
-      newMeme: {
-        description: "",
-        image: "",
-        user_id: parseInt(localStorage.getItem("user_id"))
-      },
-      fileName: "",
-      selectedFile: "",
-      loading: false,
-      errors: []
-    };
-  },
-  computed: {
-    getFileName: function() {
-      return this.fileName;
-    }
-  },
-  created: function() {
-    if (!localStorage.getItem("jwt")) {
-      alert("Sign in to post!");
-      this.$router.push("/login");
-    }
-  },
-  methods: {
-    ...mapActions(["addPost"]),
-    setFile: function() {
-      if (event.target.files.length > 0) {
-        this.newMeme.image = event.target.files[0];
-        this.fileName = event.target.files[0].name;
+  export default {
+    name: "postForm",
+    data: function() {
+      return {
+        newMeme: {
+          description: "",
+          image: "",
+          user_id: parseInt(localStorage.getItem("user_id"))
+        },
+        fileName: "",
+        selectedFile: "",
+        loading: false,
+        errors: []
+      };
+    },
+    computed: {
+      getFileName: function() {
+        return this.fileName;
       }
     },
-    update() {
-      var params = new FormData();
-      params.append("image", this.newMeme.image);
-      params.append("description", this.newMeme.description);
-      params.append("user_id", this.newMeme.user_id);
-      this.addPost(params);
-      this.loading = true;
-      this.$router.push("/");
+    created: function() {
+      if (!localStorage.getItem("jwt")) {
+        alert("Sign in to post!");
+        this.$router.push("/login");
+      }
+    },
+    methods: {
+      ...mapActions(["addPost"]),
+      setFile: function() {
+        if (event.target.files.length > 0) {
+          this.newMeme.image = event.target.files[0];
+          this.fileName = event.target.files[0].name;
+        }
+      },
+      update() {
+        var params = new FormData();
+        params.append("image", this.newMeme.image);
+        params.append("description", this.newMeme.description);
+        params.append("user_id", this.newMeme.user_id);
+        this.addPost(params);
+        this.loading = true;
+        this.$router.push("/");
+      }
     }
-  }
-};
+  };
 </script>
+
+<style>
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .file-upload {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #ffffff;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, #b1f4e8 50%, black 50%);
+    background-size: 100% 200%;
+    transition: all 1s;
+    color: black;
+    font-size: 30px;
+  }
+  .file-upload:hover {
+    background-position: 0 -100%;
+    color: #b1f4e8;
+  }
+  input[type="file"] {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+</style>

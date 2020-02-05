@@ -4,24 +4,19 @@
   </div>
 </template>
 
-<style>
-.newPost {
-  min-height: 85;
-}
-</style>
-
 <script>
-import PostForm from "../../layout/PostForm";
+  import PostForm from "../../layout/PostForm";
+  import "../../assets/styles/posts/postIndex.scss";
 
-export default {
-  name: "newPost",
-  components: {
-    PostForm
-  },
-  data: function() {
-    return {};
-  },
-  created: function() {},
-  methods: {}
-};
+  export default {
+    name: "newPost",
+    components: {
+      PostForm
+    },
+    data: function() {
+      return {};
+    },
+    created: function() {},
+    methods: {}
+  };
 </script>

@@ -61,49 +61,49 @@
   </div>
 </template>
 
-<style>
-.userPosts {
-  padding-top: 100px;
-}
-li {
-  list-style: none;
-}
-img {
-  height: auto;
-  width: 60%;
-}
-</style>
-
 <script>
-import { mapGetters, mapActions } from "vuex";
-import Comments from "../../layout/Comments";
+  import { mapGetters, mapActions } from "vuex";
+  import Comments from "../../layout/Comments";
 
-export default {
-  name: "viewPost",
-  components: {
-    Comments
-  },
-  data: function() {
-    return {
-      postComments: 0
-    };
-  },
-  created: function() {
-    this.fetchPost(this.$route.params.id);
-  },
-  computed: mapGetters(["getPost"]),
-  methods: {
-    ...mapActions(["fetchPost", "upVote", "downVote"]),
-    commentCount() {
-      try {
-        if (this.getPost.comments.length > 0) {
-          this.postComments = this.getPost.comments.length;
+  export default {
+    name: "viewPost",
+    components: {
+      Comments
+    },
+    data: function() {
+      return {
+        postComments: 0
+      };
+    },
+    created: function() {
+      this.fetchPost(this.$route.params.id);
+    },
+    computed: mapGetters(["getPost"]),
+    methods: {
+      ...mapActions(["fetchPost", "upVote", "downVote"]),
+      commentCount() {
+        try {
+          if (this.getPost.comments.length > 0) {
+            this.postComments = this.getPost.comments.length;
+          }
+          return this.postComments;
+        } catch (e) {
+          return;
         }
-        return this.postComments;
-      } catch (e) {
-        return;
       }
     }
-  }
-};
+  };
 </script>
+
+<style>
+  .userPosts {
+    padding-top: 100px;
+  }
+  li {
+    list-style: none;
+  }
+  img {
+    height: auto;
+    width: 60%;
+  }
+</style>

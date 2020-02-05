@@ -38,7 +38,7 @@
         </div>
         <div class="card-footer">
           <button class="btn btn-md btn-info" type="submit" value="Submit">
-            Submit
+            Submit!
           </button>
         </div>
       </form>

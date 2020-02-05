@@ -49,6 +49,7 @@
 <script>
   import { Component, Vue } from "vue-property-decorator";
   import { mapActions } from "vuex";
+  import "../assets/styles/posts/PostFormStyles.scss";
 
   @Component({
     name: "postForm",
@@ -96,42 +97,3 @@
     }
   }
 </script>
-
-<style>
-  .wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .file-upload {
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 4px solid #ffffff;
-    overflow: hidden;
-    background-image: linear-gradient(to bottom, #b1f4e8 50%, black 50%);
-    background-size: 100% 200%;
-    transition: all 1s;
-    color: black;
-    font-size: 30px;
-  }
-  .file-upload:hover {
-    background-position: 0 -100%;
-    color: #b1f4e8;
-  }
-  input[type="file"] {
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
-</style>

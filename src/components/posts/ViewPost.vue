@@ -95,15 +95,15 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .userPosts {
     padding-top: 100px;
-  }
-  li {
-    list-style: none;
-  }
-  img {
-    height: auto;
-    width: 60%;
+    li {
+      list-style: none;
+    }
+    img {
+      height: auto;
+      width: 60%;
+    }
   }
 </style>

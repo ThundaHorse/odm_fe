@@ -63,36 +63,36 @@
 
 <script>
   import { mapGetters, mapActions } from "vuex";
+  import { Component, Vue } from "vue-property-decorator";
   import Comments from "../../layout/Comments";
 
-  export default {
+  @Component({
     name: "viewPost",
     components: {
       Comments
-    },
-    data: function() {
-      return {
-        postComments: 0
-      };
     },
     created: function() {
       this.fetchPost(this.$route.params.id);
     },
     computed: mapGetters(["getPost"]),
     methods: {
-      ...mapActions(["fetchPost", "upVote", "downVote"]),
-      commentCount() {
-        try {
-          if (this.getPost.comments.length > 0) {
-            this.postComments = this.getPost.comments.length;
-          }
-          return this.postComments;
-        } catch (e) {
-          return;
+      ...mapActions(["fetchPost", "upVote", "downVote"])
+    }
+  })
+  export default class ViewPost extends Vue {
+    postComments = 0;
+
+    commentCount() {
+      try {
+        if (this.getPost.comments.length > 0) {
+          this.postComments = this.getPost.comments.length;
         }
+        return this.postComments;
+      } catch (e) {
+        return;
       }
     }
-  };
+  }
 </script>
 
 <style>

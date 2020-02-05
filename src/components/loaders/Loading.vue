@@ -18,20 +18,17 @@
 </template>
 
 <script>
+  import { Component, Vue } from "vue-property-decorator";
   import { FingerprintSpinner, SemipolarSpinner } from "epic-spinners";
 
-  export default {
+  @Component({
     name: "load",
-    data: function() {
-      return {};
-    },
     components: {
       FingerprintSpinner,
       SemipolarSpinner
-    },
-    created: function() {},
-    methods: {}
-  };
+    }
+  })
+  export default class Loading extends Vue {}
 </script>
 
 <style scoped>

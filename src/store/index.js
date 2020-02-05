@@ -27,7 +27,7 @@ export default new Vuex.Store({
           router.push("/login");
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async fetchPosts({ commit }) {
@@ -38,7 +38,7 @@ export default new Vuex.Store({
           commit("setPosts", data);
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async addPost({ commit }, newPost) {
@@ -53,12 +53,10 @@ export default new Vuex.Store({
           axios.post("/api/post/state/" + temp.post_id).then(() => {
             alert("Created post!");
             commit("setPosts", newP);
-            // router.push("/");
-            return 1;
           });
         });
+        return 1;
       } catch (e) {
-        alert(e);
         return 0;
       }
     },
@@ -68,7 +66,7 @@ export default new Vuex.Store({
           dispatch("fetchPosts");
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async downVote({ dispatch }, id) {
@@ -77,7 +75,7 @@ export default new Vuex.Store({
           dispatch("fetchPosts");
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async upVoteComment({ dispatch }, id) {
@@ -86,7 +84,7 @@ export default new Vuex.Store({
           dispatch("fetchPost", response.data.post_id);
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async downVoteComment({ dispatch }, id) {
@@ -95,7 +93,7 @@ export default new Vuex.Store({
           dispatch("fetchPost", response.data.post_id);
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async fetchUser({ commit }) {
@@ -108,7 +106,7 @@ export default new Vuex.Store({
             commit("setUser", user);
           });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async fetchPost({ dispatch, commit }, id) {
@@ -120,7 +118,7 @@ export default new Vuex.Store({
           dispatch("fetchComments", post.id);
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async fetchComments({ commit }, id) {
@@ -131,7 +129,7 @@ export default new Vuex.Store({
           commit("setComments", postComments);
         });
       } catch (e) {
-        alert(e);
+        return;
       }
     },
     async addComment({ dispatch }, comment) {
@@ -145,7 +143,7 @@ export default new Vuex.Store({
           });
         }
       } catch (e) {
-        alert(e);
+        return;
       }
     }
   },

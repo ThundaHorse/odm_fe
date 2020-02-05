@@ -97,14 +97,13 @@ export default new Vuex.Store({
       }
     },
     async fetchUser({ commit }) {
-      let user = [];
       try {
-        axios
-          .get("/api/users/" + parseInt(localStorage.getItem("user_id")))
-          .then(response => {
-            user = response.data;
-            commit("setUser", user);
-          });
+        let user = [];
+        let userId: any = localStorage.getItem("user_id");
+        axios.get("/api/users/" + parseInt(userId)).then(response => {
+          user = response.data;
+          commit("setUser", user);
+        });
       } catch (e) {
         return;
       }

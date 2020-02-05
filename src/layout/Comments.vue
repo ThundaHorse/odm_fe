@@ -10,7 +10,10 @@
           <div class="card-header">
             <div class="form-row">
               <p>
-                <strong>{{ comment.user }}</strong> says:
+                <strong>
+                  {{ comment.user }}
+                </strong>
+                says:
               </p>
             </div>
           </div>

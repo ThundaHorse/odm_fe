@@ -35,17 +35,20 @@
                 class="dropdown-menu bg-dark"
                 aria-labelledby="navbarDropdown"
               >
-                <a class="dropdown-item text-white bg-dark" href="/signup"
-                  >Sign Up</a
-                >
+                <a class="dropdown-item text-white bg-dark" href="/signup">
+                  Sign Up
+                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-white bg-dark" href="/login">
                   Log In
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white bg-dark" @click="logOut()"
-                  >Log Out</a
+                <a
+                  class="dropdown-item text-white bg-dark"
+                  @click.prevent="logOut()"
                 >
+                  Log Out
+                </a>
                 <!-- <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-white bg-dark" href="/userPosts/"
                   >Your Posts</a

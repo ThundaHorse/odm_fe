@@ -83,11 +83,13 @@
   import { mapGetters, mapActions } from "vuex";
   import NoPosts from "./NoPosts.vue";
   import Loading from "../loaders/Loading";
+  import BackToTop from "vue-backtotop";
 
   @Component({
     name: "PostIndex",
     components: {
       NoPosts,
+      BackToTop,
       Loading
     },
     computed: mapGetters(["allPosts"]),

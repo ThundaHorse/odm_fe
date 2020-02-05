@@ -9,7 +9,7 @@
           <br />
           <div class="wrapper">
             <div class="file-upload">
-              <label for="imageUpload">¯\_(ツ)_/¯ </label>
+              <label for="imageUpload">¯\_(ツ)_/¯</label>
               <input
                 class="form-control-file"
                 id="imageUpload"

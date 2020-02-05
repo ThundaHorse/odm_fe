@@ -202,6 +202,7 @@ export default {
         .then(() => {
           alert("Signed up successfully!");
           this.loading = true;
+          this.$router.push("/login");
         })
         .catch(errors => {
           this.errors = errors;
@@ -221,7 +222,6 @@ export default {
             this.newUserParams.password_confirmation
           ) {
             this.createUser();
-            this.$router.push("/login");
           } else {
             alert("Please fill out all fields");
             this.newUserParams.first_name = "";
@@ -233,7 +233,7 @@ export default {
           }
         }
         this.loading = false;
-      }, 2000);
+      }, 1000);
     }
   }
 };

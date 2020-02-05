@@ -79,51 +79,53 @@
 </template>
 
 <script>
+  import { Component, Vue } from "vue-property-decorator";
   import { mapGetters, mapActions } from "vuex";
   import NoPosts from "./NoPosts.vue";
   import Loading from "../loaders/Loading";
+  import BackToTop from "vue-backtotop";
 
-  export default {
+  @Component({
     name: "PostIndex",
-    data() {
-      return {
-        loading: true
-      };
-    },
     components: {
       NoPosts,
+      BackToTop,
       Loading
     },
+    computed: mapGetters(["allPosts"]),
     created: function() {
       this.onLoad();
     },
-    computed: mapGetters(["allPosts"]),
     methods: {
-      ...mapActions(["fetchPosts", "upVote", "downVote"]),
-      postPage(input) {
-        this.$router.push("/post/" + input);
-      },
-      commentCount(post) {
-        let postComments = 0;
-        try {
-          if (post.comments.length > 0) {
-            postComments = post.comments.length;
-          }
-          return postComments;
-        } catch (e) {
-          alert(e);
+      ...mapActions(["fetchPosts", "upVote", "downVote"])
+    }
+  })
+  export default class PostIndex extends Vue {
+    loading = true;
+
+    postPage(input) {
+      this.$router.push("/post/" + input);
+    }
+    commentCount(post) {
+      let postComments = 0;
+      try {
+        if (post.comments.length > 0) {
+          postComments = post.comments.length;
         }
-      },
-      onLoad() {
-        this.loading = true;
-        setTimeout(() => {
-          this.$store.dispatch("fetchPosts").then(() => {
-            this.loading = false;
-          });
-        }, 2000);
+        return postComments;
+      } catch (e) {
+        alert(e);
       }
     }
-  };
+    onLoad() {
+      this.loading = true;
+      setTimeout(() => {
+        this.$store.dispatch("fetchPosts").then(() => {
+          this.loading = false;
+        });
+      }, 2000);
+    }
+  }
 </script>
 
 <style>

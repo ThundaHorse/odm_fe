@@ -105,32 +105,31 @@
 </template>
 
 <script>
-import axios from "axios";
-import Loading from "../loaders/Loading";
+  import axios from "axios";
+  import Loading from "../loaders/Loading";
+  import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: "signup",
-  data: function() {
-    return {
-      newUserParams: {
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone_number: "",
-        password: "",
-        password_confirmation: ""
-      },
-      errors: [],
-      loading: false
+  @Component({
+    name: "signup",
+    components: {
+      Loading
+    },
+    created() {
+      this.onLoad();
+    }
+  })
+  export default class Signup extends Vue {
+    newUserParams = {
+      first_name: "",
+      last_name: "",
+      email: "",
+      phone_number: "",
+      password: "",
+      password_confirmation: ""
     };
-  },
-  components: {
-    Loading
-  },
-  created() {
-    this.onLoad();
-  },
-  methods: {
+    errors = [];
+    loading = false;
+
     createUser() {
       axios
         .post("/api/users", this.newUserParams)
@@ -142,7 +141,7 @@ export default {
         .catch(errors => {
           this.errors = errors;
         });
-    },
+    }
     onLoad() {
       this.loading = false;
       setTimeout(() => {
@@ -171,70 +170,69 @@ export default {
       }, 1000);
     }
   }
-};
 </script>
 
 <style scoped>
-.signup {
-  min-height: 85vh;
-}
-form {
-  margin: 50px auto;
-  background: #52525296;
-  opacity: 0.7;
-  text-align: center;
-  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-}
-form:hover {
-  opacity: 0.9;
-}
-.input {
-  width: 100%;
-  padding: 10px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: white;
-}
-label {
-  display: block;
-  position: relative;
-  margin: 40px 0px;
-}
-.label-txt {
-  position: absolute;
-  top: -1.6em;
-  padding: 10px;
-  font-family: sans-serif;
-  font-size: 0.8em;
-  letter-spacing: 1px;
-  color: rgb(120, 120, 120);
-  transition: ease 0.3s;
-}
-.line-box {
-  position: relative;
-  width: 100%;
-  height: 2px;
-  background: #bcbcbc;
-}
-.line {
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  top: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #b1f4e8;
-  transition: ease 0.6s;
-}
-.input:focus + .line-box .line {
-  width: 100%;
-}
-.label-active {
-  top: -3em;
-}
-p.label-txt {
-  color: white;
-}
+  .signup {
+    min-height: 85vh;
+  }
+  form {
+    margin: 50px auto;
+    background: #52525296;
+    opacity: 0.7;
+    text-align: center;
+    -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  form:hover {
+    opacity: 0.9;
+  }
+  .input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+  }
+  label {
+    display: block;
+    position: relative;
+    margin: 40px 0px;
+  }
+  .label-txt {
+    position: absolute;
+    top: -1.6em;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    color: rgb(120, 120, 120);
+    transition: ease 0.3s;
+  }
+  .line-box {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: #bcbcbc;
+  }
+  .line {
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #b1f4e8;
+    transition: ease 0.6s;
+  }
+  .input:focus + .line-box .line {
+    width: 100%;
+  }
+  .label-active {
+    top: -3em;
+  }
+  p.label-txt {
+    color: white;
+  }
 </style>

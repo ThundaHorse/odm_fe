@@ -11,14 +11,12 @@
 </template>
 
 <script>
-  export default {
-    name: "noPosts",
-    data: function() {
-      return {};
-    },
-    created: function() {},
-    methods: {}
-  };
+  import { Component, Vue } from "vue-property-decorator";
+
+  @Component({
+    name: "noPosts"
+  })
+  export default class NoPosts extends Vue {}
 </script>
 
 <style>

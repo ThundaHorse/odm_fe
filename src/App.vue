@@ -10,17 +10,15 @@
 </template>
 
 <script>
+  import { Component, Vue } from "vue-property-decorator";
   import MainHeader from "./layout/MainHeader";
 
-  export default {
+  @Component({
     components: {
       MainHeader
-    },
-    data() {
-      return {};
-    },
-    methods: {}
-  };
+    }
+  })
+  export default class App extends Vue {}
 </script>
 
 <style>

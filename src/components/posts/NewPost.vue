@@ -6,17 +6,14 @@
 
 <script>
   import PostForm from "../../layout/PostForm";
+  import { Component, Vue } from "vue-property-decorator";
   import "../../assets/styles/posts/postIndex.scss";
 
-  export default {
+  @Component({
     name: "newPost",
     components: {
       PostForm
-    },
-    data: function() {
-      return {};
-    },
-    created: function() {},
-    methods: {}
-  };
+    }
+  })
+  export default class NewPost extends Vue {}
 </script>

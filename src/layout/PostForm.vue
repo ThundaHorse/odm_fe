@@ -9,7 +9,7 @@
           <br />
           <div class="wrapper">
             <div class="file-upload">
-              <label for="imageUpload">¯\_(ツ)_/¯ </label>
+              <label for="imageUpload">¯\_(ツ)_/¯</label>
               <input
                 class="form-control-file"
                 id="imageUpload"
@@ -47,23 +47,11 @@
 </template>
 
 <script>
+  import { Component, Vue } from "vue-property-decorator";
   import { mapActions } from "vuex";
 
-  export default {
+  @Component({
     name: "postForm",
-    data: function() {
-      return {
-        newMeme: {
-          description: "",
-          image: "",
-          user_id: parseInt(localStorage.getItem("user_id"))
-        },
-        fileName: "",
-        selectedFile: "",
-        loading: false,
-        errors: []
-      };
-    },
     computed: {
       getFileName: function() {
         return this.fileName;
@@ -76,24 +64,37 @@
       }
     },
     methods: {
-      ...mapActions(["addPost"]),
-      setFile: function() {
-        if (event.target.files.length > 0) {
-          this.newMeme.image = event.target.files[0];
-          this.fileName = event.target.files[0].name;
-        }
-      },
-      update() {
-        var params = new FormData();
-        params.append("image", this.newMeme.image);
-        params.append("description", this.newMeme.description);
-        params.append("user_id", this.newMeme.user_id);
-        this.addPost(params);
-        this.loading = true;
-        this.$router.push("/");
+      ...mapActions(["addPost"])
+    }
+  })
+  export default class PostForm extends Vue {
+    newMeme = {
+      description: "",
+      image: "",
+      user_id: parseInt(localStorage.getItem("user_id"))
+    };
+    fileName = "";
+    selectedFile = "";
+    loading = false;
+    errors = [];
+
+    setFile() {
+      if (event.target.files.length > 0) {
+        this.newMeme.image = event.target.files[0];
+        this.fileName = event.target.files[0].name;
       }
     }
-  };
+
+    update() {
+      var params = new FormData();
+      params.append("image", this.newMeme.image);
+      params.append("description", this.newMeme.description);
+      params.append("user_id", this.newMeme.user_id);
+      this.addPost(params);
+      this.loading = true;
+      this.$router.push("/");
+    }
+  }
 </script>
 
 <style>

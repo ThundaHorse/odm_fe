@@ -10,7 +10,10 @@
           <div class="card-header">
             <div class="form-row">
               <p>
-                <strong>{{ comment.user }}</strong> says:
+                <strong>
+                  {{ comment.user }}
+                </strong>
+                says:
               </p>
             </div>
           </div>
@@ -81,17 +84,10 @@
 
 <script>
   import { mapGetters, mapActions } from "vuex";
+  import { Component, Vue } from "vue-property-decorator";
 
-  export default {
+  @Component({
     name: "comments",
-    data: function() {
-      return {
-        newComment: {
-          post_id: this.$route.params.id,
-          body: ""
-        }
-      };
-    },
     created: function() {
       this.fetchPost(this.$route.params.id);
     },
@@ -103,16 +99,23 @@
         "addComment",
         "upVoteComment",
         "downVoteComment"
-      ]),
-      alternatingCards(i) {
-        if (i % 2 !== 0) {
-          return "card text-white bg-dark border-info mb-1 mt-2";
-        } else {
-          return "card text-white bg-secondary border-info mb-1 mt-2";
-        }
+      ])
+    }
+  })
+  export default class Comments extends Vue {
+    newComment = {
+      post_id: this.$route.params.id,
+      body: ""
+    };
+
+    alternatingCards(i) {
+      if (i % 2 !== 0) {
+        return "card text-white bg-dark border-info mb-1 mt-2";
+      } else {
+        return "card text-white bg-secondary border-info mb-1 mt-2";
       }
     }
-  };
+  }
 </script>
 
 <style scoped>

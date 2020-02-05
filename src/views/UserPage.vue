@@ -10,20 +10,19 @@
 </template>
 
 <script>
+  import { Component, Vue } from "vue-property-decorator";
   import { mapGetters, mapActions } from "vuex";
 
-  export default {
+  @Component({
     name: "userPage",
-    data: function() {
-      return {};
-    },
     computed: mapGetters(["getUser", "userPosts"]),
-    methods: {
-      ...mapActions(["fetchUser", "fetchUserPosts"])
-    },
     created() {
       this.fetchUser();
       this.fetchUserPosts();
+    },
+    methods: {
+      ...mapActions(["fetchUser", "fetchUserPosts"])
     }
-  };
+  })
+  export default class UserPage extends Vue {}
 </script>

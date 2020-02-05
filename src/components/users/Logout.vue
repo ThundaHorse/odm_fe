@@ -3,16 +3,18 @@
 </template>
 
 <script>
-import axios from "axios";
+  import { Component, Vue } from "vue-property-decorator";
+  import axios from "axios";
 
-export default {
-  created: function() {
-    delete axios.defaults.headers.common["Authorizations"];
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("user_id");
-    alert("Logged out succesfully!");
-    this.$router.push("/login");
-  },
-  methods: {}
-};
+  @Component({
+    name: "logout",
+    created: function() {
+      delete axios.defaults.headers.common["Authorizations"];
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("user_id");
+      alert("Logged out succesfully!");
+      this.$router.push("/login");
+    }
+  })
+  export default class Logout extends Vue {}
 </script>

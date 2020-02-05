@@ -7,19 +7,15 @@
 </template>
 
 <script>
+  import { Component, Vue } from "vue-property-decorator";
   import PostIndex from "../components/posts/PostIndex";
 
-  export default {
-    name: "home",
+  @Component({
     components: {
       PostIndex
-    },
-    data() {
-      return {};
-    },
-    methods: {},
-    created() {}
-  };
+    }
+  })
+  export default class Home extends Vue {}
 </script>
 
 <style>

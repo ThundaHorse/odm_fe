@@ -88,10 +88,10 @@
 
   @Component({
     name: "comments",
+    computed: mapGetters(["postComments", "getPost"]),
     created: function() {
       this.fetchPost(this.$route.params.id);
     },
-    computed: mapGetters(["postComments", "getPost"]),
     methods: {
       ...mapActions([
         "fetchComments",
@@ -107,6 +107,10 @@
       post_id: this.$route.params.id,
       body: ""
     };
+
+    submitComment() {
+      this.addComment(newComment);
+    }
 
     alternatingCards(i) {
       if (i % 2 !== 0) {

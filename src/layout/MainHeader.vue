@@ -49,10 +49,10 @@
                 >
                   Log Out
                 </a>
-                <!-- <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-white bg-dark" href="/userPosts/"
-                  >Your Posts</a
-                > -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-white bg-dark" href="/userPosts/">
+                  Your Posts
+                </a>
               </div>
             </li>
           </ul>
@@ -65,6 +65,7 @@
 
 <script>
   import { Component, Vue } from "vue-property-decorator";
+  import "../assets/styles/layouts/HeaderStyle.scss";
   import axios from "axios";
 
   @Component({
@@ -80,10 +81,3 @@
     }
   }
 </script>
-
-<style>
-  nav {
-    padding: 1rem;
-    border-bottom: #a8f3e5 1px solid;
-  }
-</style>

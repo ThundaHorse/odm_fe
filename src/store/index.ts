@@ -121,8 +121,8 @@ export default new Vuex.Store({
       }
     },
     async fetchComments({ commit }, id) {
-      let postComments = [];
       try {
+        let postComments = [];
         axios.get("/api/comments/post/" + id).then(response => {
           postComments = response.data;
           commit("setComments", postComments);

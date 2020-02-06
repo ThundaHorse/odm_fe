@@ -49,7 +49,7 @@
 <script>
   import { Component, Vue } from "vue-property-decorator";
   import { mapActions } from "vuex";
-  import "../assets/styles/posts/PostFormStyles.scss";
+  import "../../assets/styles/posts/PostFormStyles.scss";
 
   @Component({
     name: "postForm",

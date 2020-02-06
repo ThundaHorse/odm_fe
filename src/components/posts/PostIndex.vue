@@ -2,7 +2,7 @@
   <div class="posts">
     <Loading v-if="loading && allPosts" />
     <NoPosts v-if="!allPosts" />
-    <div v-else class="container justify-content-center mt-4">
+    <div v-else class="container mt-4">
       <br />
       <transition-group name="slide-fade">
         <div
@@ -10,7 +10,6 @@
           :key="post.id"
           class="card text-white bg-secondary border-info mb-1 mt-4"
           :class="loading ? 'finished' : ''"
-          style="max-width: 1000px;"
         >
           <div class="card-header">
             <h2 @click.prevent="postPage(post.id)" style="cursor: pointer;">
@@ -82,8 +81,9 @@
   import { Component, Vue } from "vue-property-decorator";
   import { mapGetters, mapActions } from "vuex";
   import NoPosts from "./NoPosts.vue";
-  import Loading from "../loaders/Loading";
+  import Loading from "../loaders/Loading.vue";
   import BackToTop from "vue-backtotop";
+  import "../../assets/styles/posts/PostIndexStyles.scss";
 
   @Component({
     name: "PostIndex",
@@ -127,49 +127,3 @@
     }
   }
 </script>
-
-<style>
-  .jumbotron {
-    height: 50vh;
-  }
-  img {
-    height: auto;
-    width: 60%;
-  }
-  .left {
-    box-sizing: border-box;
-    float: left !important;
-  }
-  .btn-vote li {
-    margin: 0 8px 0 0;
-    float: left;
-    list-style: none;
-  }
-  li {
-    display: list-item;
-    text-align: center;
-    list-style: none;
-  }
-  .slide-fade-enter-active {
-    transition: all 1.5s ease;
-  }
-  .slide-fade-leave-active {
-    transition: all 1.5s cubic-bezier(1, 0.5, 0.8, 1);
-  }
-  .slide-fade-enter,
-  .slide-fade-leave-to {
-    transform: translateX(10px);
-    opacity: 0;
-  }
-  .btn-to-top {
-    width: 60px;
-    height: 60px;
-    padding: 10px 16px;
-    border-radius: 50%;
-    font-size: 22px;
-    line-height: 22px;
-  }
-  .finished {
-    display: none;
-  }
-</style>

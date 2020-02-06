@@ -4,10 +4,24 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
+  // Posts
   {
     path: "/",
-    name: "home",
-    component: () => import(/* webpackChunkName: "Home" */ "../views/Home.vue")
+    name: "posts",
+    component: () =>
+      import(/* webpackChunkName: "NewPost" */ "../views/posts/Posts.vue")
+  },
+  {
+    path: "/post/:id",
+    name: "viewPost",
+    component: () =>
+      import(/* webpackChunkName: "ViewPost" */ "../views/posts/ViewPost.vue")
+  },
+  {
+    path: "/newPost",
+    name: "newPost",
+    component: () =>
+      import(/* webpackChunkName: "ViewPost" */ "../views/posts/NewPost.vue")
   },
   {
     path: "/user",
@@ -22,25 +36,8 @@ const routes = [
       import(/* webpackChunkName: "Login" */ "../components/users/Login.vue")
   },
   {
-    path: "/newPost",
-    name: "newPost",
-    component: () =>
-      import(
-        /* webpackChunkName: "NewPost" */ "../components/posts/NewPost.vue"
-      )
-  },
-  {
-    path: "/post/:id",
-    name: "viewPost",
-    component: () =>
-      import(
-        /* webpackChunkName: "ViewPost" */ "../components/posts/ViewPost.vue"
-      )
-  },
-  {
     path: "/signup",
     name: "signup",
-    // generates separate chunk for this route which lazy-loads when route is visited
     component: () =>
       import(/* webpackChunkName: "Signup" */ "../components/users/Signup.vue")
   }

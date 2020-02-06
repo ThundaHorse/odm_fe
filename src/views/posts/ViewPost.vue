@@ -1,6 +1,6 @@
 <template>
   <div class="viewPost">
-    <div class="container" style="padding-top:30px;">
+    <div class="container mt-4">
       <div class="card text-white bg-secondary border-info mb-1 mt-4">
         <div class="card-header">
           <h2>
@@ -9,7 +9,11 @@
         </div>
         <div class="card-body bg-dark">
           <blockquote class="blockquote mb-0">
-            <img :src="getPost.image_url" :alt="getPost.description" />
+            <img
+              class="post-image"
+              :src="getPost.image_url"
+              :alt="getPost.description"
+            />
           </blockquote>
           <footer class="blockquote-footer">
             <p class="text-center text-white">by {{ getPost.poster }}</p>
@@ -53,10 +57,10 @@
           </footer>
         </div>
       </div>
-    </div>
-    <br />
-    <div class="container">
-      <Comments />
+      <br />
+      <div class="container">
+        <Comments />
+      </div>
     </div>
   </div>
 </template>
@@ -64,7 +68,8 @@
 <script>
   import { mapGetters, mapActions } from "vuex";
   import { Component, Vue } from "vue-property-decorator";
-  import Comments from "../../layout/Comments";
+  import Comments from "../../components/comments/Comments.vue";
+  import "./ViewPostStyle.scss";
 
   @Component({
     name: "viewPost",
@@ -94,16 +99,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  .userPosts {
-    padding-top: 100px;
-    li {
-      list-style: none;
-    }
-    img {
-      height: auto;
-      width: 60%;
-    }
-  }
-</style>

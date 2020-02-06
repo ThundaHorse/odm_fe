@@ -5,9 +5,8 @@
 </template>
 
 <script>
-  import PostForm from "../../layout/PostForm";
+  import PostForm from "../../components/posts/PostForm.vue";
   import { Component, Vue } from "vue-property-decorator";
-  import "../../assets/styles/posts/postIndex.scss";
 
   @Component({
     name: "newPost",

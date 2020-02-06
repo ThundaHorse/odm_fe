@@ -1,0 +1,16 @@
+.viewPost {
+  margin-top: 100px;
+  li {
+    list-style: none;
+  }
+  .card {
+    max-width: 50rem;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .post-image {
+    height: auto;
+    width: 100%;
+  }
+}

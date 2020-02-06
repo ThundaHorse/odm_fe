@@ -10,13 +10,15 @@ export default new Vuex.Store({
     posts: [],
     user: [],
     post: [],
-    comments: []
+    comments: [],
+    errors: []
   },
   getters: {
-    allPosts: state => state.posts,
+    // allPosts: state => state.posts,
     getUser: state => state.user,
     postComments: state => state.comments,
-    getPost: state => state.post
+    // getPost: state => state.post,
+    getErrors: state => state.errors
   },
   actions: {
     async addUser({ commit }, userParams) {
@@ -27,7 +29,7 @@ export default new Vuex.Store({
           router.push("/login");
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
     async fetchPosts({ commit }) {
@@ -38,7 +40,7 @@ export default new Vuex.Store({
           commit("setPosts", data);
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
     async addPost({ commit }, newPost) {
@@ -57,43 +59,43 @@ export default new Vuex.Store({
         });
         return 1;
       } catch (e) {
-        return 0;
+        commit("setErrors", e);
       }
     },
-    async upVote({ dispatch }, id) {
+    async upVote({ commit, dispatch }, id) {
       try {
         axios.patch("/api/post/upvote/" + id).then(() => {
           dispatch("fetchPosts");
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
-    async downVote({ dispatch }, id) {
+    async downVote({ commit, dispatch }, id) {
       try {
         axios.patch("/api/post/downvote/" + id).then(() => {
           dispatch("fetchPosts");
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
-    async upVoteComment({ dispatch }, id) {
+    async upVoteComment({ commit, dispatch }, id) {
       try {
         axios.patch("/api/comments/upvote/" + id).then(response => {
           dispatch("fetchPost", response.data.post_id);
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
-    async downVoteComment({ dispatch }, id) {
+    async downVoteComment({ commit, dispatch }, id) {
       try {
         axios.patch("/api/comments/downvote/" + id).then(response => {
           dispatch("fetchPost", response.data.post_id);
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
     async fetchUser({ commit }) {
@@ -105,7 +107,7 @@ export default new Vuex.Store({
           commit("setUser", user);
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
     async fetchPost({ dispatch, commit }, id) {
@@ -117,7 +119,7 @@ export default new Vuex.Store({
           dispatch("fetchComments", post.id);
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
     async fetchComments({ commit }, id) {
@@ -128,10 +130,10 @@ export default new Vuex.Store({
           commit("setComments", postComments);
         });
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     },
-    async addComment({ dispatch }, comment) {
+    async addComment({ commit, dispatch }, comment) {
       try {
         if (comment.body.length <= 0) {
           alert("Enter a comment before submitting");
@@ -142,7 +144,7 @@ export default new Vuex.Store({
           });
         }
       } catch (e) {
-        return;
+        commit("setErrors", e);
       }
     }
   },
@@ -150,7 +152,8 @@ export default new Vuex.Store({
     setPosts: (state, posts) => (state.posts = posts),
     setUser: (state, user) => (state.user = user),
     setComments: (state, comments) => (state.comments = comments),
-    setPost: (state, post) => (state.post = post)
+    setPost: (state, post) => (state.post = post),
+    setErrors: (state, errors) => (state.errors = errors)
   },
   modules: {}
 });

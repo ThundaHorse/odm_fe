@@ -1,30 +1,40 @@
 <template>
   <div class="home">
     <div class="container">
-      <PostIndex />
+      <form>
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            class="form-control"
+            placeholder="First Name"
+            maxlength="99"
+          />
+          <span
+            class="field-validation-error"
+            data-valmsg-for="First_Name"
+            data-valmsg-replace="true"
+          >
+            <span id="fname-error" class=""></span>
+          </span>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
-<style>
-.home {
-  margin-bottom: 110px;
-  flex-grow: 1;
-}
-</style>
+<style lang="scss"></style>
 
 <script>
-import PostIndex from "../components/posts/PostIndex";
-
-export default {
-  name: "home",
-  components: {
-    PostIndex
-  },
-  data() {
-    return {};
-  },
-  methods: {},
-  created() {}
-};
+  export default {
+    name: "home",
+    components: {},
+    data() {
+      return {};
+    },
+    methods: {},
+    created() {}
+  };
 </script>

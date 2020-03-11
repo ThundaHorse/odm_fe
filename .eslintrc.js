@@ -3,18 +3,24 @@ module.exports = {
   env: {
     node: true
   },
-  extends: [
-    "plugin:vue/essential",
-    "plugin:prettier/recommended",
-    "eslint:recommended"
-  ],
+  extends: ["plugin:vue/essential", "@vue/prettier", "@vue/typescript"],
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    htmlWhitespaceSensitivity: "ignore"
+    "prettier/prettier": [
+      "error",
+      {
+        htmlWhitespaceSensitivity: "ignore",
+        vueIndentScriptAndStyle: true,
+        indentHandlebars: true,
+        quiet: true,
+        endOfLine: "auto",
+        wordWrap: "on"
+      }
+    ]
   },
   parserOptions: {
-    parser: "babel-eslint"
+    parser: "@typescript-eslint/parser"
   },
   overrides: [
     {
